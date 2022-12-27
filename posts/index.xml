@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My website</title>
+    <link>https://data-think-2021.github.io/datathink-blog/posts/</link>
+    <description>Recent content in Posts on My website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://data-think-2021.github.io/datathink-blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create a Personal Website With Hugo</title>
+      <link>https://data-think-2021.github.io/datathink-blog/2022/12/create-a-personal-website-with-hugo/</link>
+      <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://data-think-2021.github.io/datathink-blog/2022/12/create-a-personal-website-with-hugo/</guid>
+      <description>Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &amp;ldquo;create a personal website&amp;rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes.</description>
+    </item>
+    
+  </channel>
+</rss>
