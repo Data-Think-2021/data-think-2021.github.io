@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching \u0026ldquo;create a personal website\u0026rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes.",
+  "description": "Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching \u0026ldquo;create a personal website\u0026rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.",
   "keywords": []
 }
 
@@ -43,18 +43,18 @@
 <meta name="generator" content="Hugo 0.108.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xia He-Bleinagel">
 <meta name="keywords" content="">
-<meta name="description" content="Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes.">
+<meta name="description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
 
 
-<meta property="og:description" content="Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes.">
+<meta property="og:description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Create a Personal Website With Hugo">
 <meta name="twitter:title" content="Create a Personal Website With Hugo">
 <meta property="og:url" content="https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/">
 <meta property="twitter:url" content="https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/">
 <meta property="og:site_name" content="My website">
-<meta property="og:description" content="Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes.">
-<meta name="twitter:description" content="Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes.">
+<meta property="og:description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
+<meta name="twitter:description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
 <meta property="og:locale" content="en-us">
 
   
@@ -313,7 +313,24 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h2 id="introduction">Introduction</h2>
+              <h2 id="table-of-contents">Table of Contents</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#choose-a-hugo-theme">Choose a Hugo Theme</a></li>
+        <li><a href="#create-a-project">Create a project</a></li>
+        <li><a href="#create-your-first-content">Create your first content</a></li>
+        <li><a href="#deploy-in-github">Deploy in Github</a></li>
+        <li><a href="#debugging">Debugging</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<h2 id="introduction">Introduction</h2>
 <p>I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by  searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes. That&rsquo;s great. I was excited about it.</p>
 <p>The main reasons I want to have a personal website are:</p>
 <ul>
@@ -402,7 +419,13 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-</code></pre>
+</code></pre><h2 id="debugging">Debugging</h2>
+<p>You did all the steps above and wait the most exciting moment that the web is online. But there is an error.</p>
+<ul>
+<li>In config.toml, do you add theme and change baseURL?</li>
+<li></li>
+</ul>
+
               
 
 
@@ -513,7 +536,7 @@ jobs:
           return;
         }
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        var disqus_shortname = 'data-think';
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
       })();
