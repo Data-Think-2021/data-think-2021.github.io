@@ -117,6 +117,17 @@
 
     
       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVKGJSSLNL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-PVKGJSSLNL', { 'anonymize_ip': false });
+}
+</script>
+
     
     
   </head>
@@ -128,6 +139,18 @@
   <div class="header-title">
     <a class="header-title-link" href="https://data-think-2021.github.io/" aria-label="Go to homepage">My website</a>
   </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://data-think-2021.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
   
 </header>
 
@@ -299,24 +322,87 @@
 </ul>
 <p>Hugo is a static site generator which allows website authors to create blogs or pages in Markdown. So it&rsquo;s suitable for me. You can host it freely in <a href="https://pages.github.com/">Github pages</a>. What&rsquo;s more, there are hundreds of <a href="https://themes.gohugo.io/">Hugo themes</a> ready to use for various purpose. Sounds cool? And guess what? I spent 10 minutes to watch that youtube turorial but the rest of weekend to figure it what&rsquo;s wrong with one error by deploying. I will share my guide so that you don&rsquo;t have to go through all the pain I went throught.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>In order to contiue and see if it&rsquo;s suitable for you, you need to fill the following prerequisites.</p>
+<p>Hugo is pretty cool and seems easier, you are expected to already know some basic knowledge of html, command line, git etc. It requires investing time to learn some things if you don&rsquo;t know them all.</p>
 <ul>
-<li><strong>Installation of Hugo</strong><br>
+<li><em>Installation of Hugo</em>  <br>
 Refer to the official documentation <a href="https://gohugo.io/installation/">Installation</a></li>
-<li><strong>Basic knowledge of Markdown or HTML</strong><br>
+<li><em>Basic knowledge of Markdown or HTML, css, command line and text editors</em>  <br>
 Both HTML and Markdown are supported content formats.</li>
-<li><strong>One IDE, e.g. VS code</strong></li>
-<li><strong>A Github account</strong><br>
-Ahttps://pages.github.com/</li>
-<li><strong>Knowledge of Git</strong><br>
+<li><em>One IDE, e.g. VS code</em></li>
+<li><em>A Github account</em> <br>
+<a href="https://pages.github.com/">https://pages.github.com/</a></li>
+<li><em>Knowledge of Git</em>   <br>
 Git is required to install a theme as a Git submodule, access commit information from a local repository and host your site.</li>
 </ul>
 <h2 id="choose-a-hugo-theme">Choose a Hugo Theme</h2>
 <p>You can find one suitable Hugo theme <a href="https://themes.gohugo.io/">hier</a>. Either for a portfolio, or company, there are plenty of template themes to choose. I&rsquo;ve chosen <a href="https://themes.gohugo.io/themes/hugo-tranquilpeak-theme/">hugo tranquilpeak theme</a>.</p>
 <h2 id="create-a-project">Create a project</h2>
+<ol>
+<li>Create a folder in your local PC.
+If you want to use any hugo theme, you can do it either with git clone or git submodule. git submodule makes it easier to update this theme if you have your Hugo site in git as well.</li>
+</ol>
+<p>git submodule is recommended. You can always copy the layouts to overwrite the default theme.</p>
+<pre tabindex="0"><code>mkdir hugo-site
+hugo new site my-hugo-site
+cd my-hugo-site
+git init
+## Add theme
+git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/hugo-tranquilpeak-theme
+echo &#34;theme = &#39;hugo-tranquilpeak-theme&#39;&#34; &gt;&gt; config.toml
+hugo server
+</code></pre><p>git clone the theme under the folder themes. Please don&rsquo;t forget to remove .git.</p>
 <h2 id="create-your-first-content">Create your first content</h2>
+<pre tabindex="0"><code>hugo new posts/my-first-blog.md
+</code></pre><p>You can use markdown language to write content.</p>
 <h2 id="deploy-in-github">Deploy in Github</h2>
+<p>I tried two methods to deploy in Github.<br>
+The first one with public is recommended. I wrote down the second method for reference.</p>
+<ol>
+<li>
+<p>Method:<br>
+With <code>Hugo</code> command you can publish your website.
+then enter Public folder and <code>git init</code>. Push this public folder to a github repository.<br>
+In this method, you will prepare two github repositories. One private repo is for the content and the public repo is for the publishing website.</p>
+</li>
+<li>
+<p>Method:<br>
+In the root folder create the folders called <strong>.github/workflows</strong>. Then create a file called <strong>gh-pages.yml</strong>.
+Then copy the following content to the yml file. Then git push all the changes in the root folder to github repository.</p>
+</li>
+</ol>
+<pre tabindex="0"><code>name: github pages
 
+on:
+  push:
+    branches:
+      - main  # Set a branch that will trigger a deployment
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: &#39;latest&#39;
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == &#39;refs/heads/main&#39;
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+</code></pre>
               
 
 
@@ -390,6 +476,12 @@ Git is required to install a theme as a Git submodule, access commit information
     
   
   
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
   <li class="post-action">
     
       <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
@@ -402,6 +494,30 @@ Git is required to install a theme as a Git submodule, access commit information
 
 
             
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/data-think-2021.github.io\/2022\/12\/create-a-personal-website-with-hugo\/';
+        
+          this.page.identifier = '\/2022\/12\/create-a-personal-website-with-hugo\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
   
 
 
@@ -466,6 +582,12 @@ Git is required to install a theme as a Git submodule, access commit information
       </li>
     
   
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
   
   <li class="post-action">
     
@@ -543,7 +665,7 @@ Git is required to install a theme as a Git submodule, access commit information
     
   
     
-      <div id="cover" style="background-image:url('https://data-think-2021.github.io/images/cover.jpg');"></div>
+      <div id="cover" style="background-image:url('https://data-think-2021.github.io/img/sunset.jpg');"></div>
     
   
 
