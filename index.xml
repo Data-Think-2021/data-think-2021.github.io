@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My website</title>
+    <title>Xia He-Bleinagel</title>
     <link>https://data-think-2021.github.io/</link>
-    <description>Recent content on My website</description>
+    <description>Recent content on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://data-think-2021.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -13,18 +13,7 @@
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/</guid>
-      <description>Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &amp;ldquo;create a personal website&amp;rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.</description>
-    </item>
-    
-    <item>
-      <title>Google Analytics with API</title>
-      <link>https://data-think-2021.github.io/projects/2022-12-06-google-analytics-with-api/</link>
-      <pubDate>Tue, 06 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://data-think-2021.github.io/projects/2022-12-06-google-analytics-with-api/</guid>
-      <description>&lt;p&gt;Hi,
-the powerful with API &amp;hellip;..d
-Here you can find a list of the blogs that use Tranquilpeak theme, with different styles and customizations.&lt;/p&gt;</description>
+      <description>I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.</description>
     </item>
     
     <item>

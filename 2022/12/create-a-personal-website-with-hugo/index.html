@@ -9,6 +9,8 @@
   "@type": "BlogPosting",
   "headline": "Create a Personal Website With Hugo",
   
+  "image": "//d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city.jpg",
+  
   "datePublished": "2022-12-27T00:00:00Z",
   "dateModified": "2022-12-27T00:00:00Z",
   "author": {
@@ -24,7 +26,7 @@
   },
   "publisher": {
     "@type": "Organization",
-    "name": "My website",
+    "name": "Xia He-Bleinagel",
     
     "logo": {
       "@type": "ImageObject",
@@ -32,7 +34,7 @@
     }
     
   },
-  "description": "Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching \u0026ldquo;create a personal website\u0026rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.",
+  "description": "I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.",
   "keywords": []
 }
 
@@ -43,18 +45,18 @@
 <meta name="generator" content="Hugo 0.108.0 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Xia He-Bleinagel">
 <meta name="keywords" content="">
-<meta name="description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
+<meta name="description" content="I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.">
 
 
-<meta property="og:description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
+<meta property="og:description" content="I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Create a Personal Website With Hugo">
 <meta name="twitter:title" content="Create a Personal Website With Hugo">
 <meta property="og:url" content="https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/">
 <meta property="twitter:url" content="https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/">
-<meta property="og:site_name" content="My website">
-<meta property="og:description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
-<meta name="twitter:description" content="Table of Contents Introduction Prerequisites Choose a Hugo Theme Create a project Create your first content Deploy in Github Debugging Introduction I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄.">
+<meta property="og:site_name" content="Xia He-Bleinagel">
+<meta property="og:description" content="I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.">
+<meta name="twitter:description" content="I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.">
 <meta property="og:locale" content="en-us">
 
   
@@ -94,6 +96,12 @@
 
 
 
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city.jpg">
+
+
+  <meta property="og:image" content="//d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city-750.jpg">
+  <meta property="twitter:image" content="//d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city-750.jpg">
 
 
     <title>Create a Personal Website With Hugo</title>
@@ -137,7 +145,7 @@ if (!doNotTrack) {
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://data-think-2021.github.io/" aria-label="Go to homepage">My website</a>
+    <a class="header-title-link" href="https://data-think-2021.github.io/" aria-label="Go to homepage">Xia He-Bleinagel</a>
   </div>
   
     
@@ -163,7 +171,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">Xia He-Bleinagel</h4>
         
-          <h5 class="sidebar-profile-bio">Data Generalist Consultant</h5>
+          <h5 class="sidebar-profile-bio">Data Generalist| From web tracking, data engineering, NLP, building and deploying ML models to cloud migration</h5>
         
       </div>
     
@@ -186,16 +194,6 @@ if (!doNotTrack) {
       <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">Categories</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://data-think-2021.github.io/tags" title="Tags">
-    
-      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
-      
-      <span class="sidebar-button-desc">Tags</span>
     </a>
   </li>
 
@@ -273,15 +271,13 @@ if (!doNotTrack) {
 </nav>
 
       
-
-      <div id="main" data-behavior="4"
-        class="
-               hasCoverMetaIn
-               ">
-        <article class="post" id="top">
-          
-          
-            <div class="post-header main-content-wrap text-left">
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//d1u9biwaxjngwg.cloudfront.net/welcome-to-tranquilpeak/city.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
       Create a Personal Website With Hugo
@@ -310,82 +306,113 @@ if (!doNotTrack) {
   </div>
 
 </div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <h2 id="table-of-contents">Table of Contents</h2>
+              <div>
+<h1 id="table-of-contents"></h1>
 <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#choose-a-hugo-theme">Choose a Hugo Theme</a></li>
-        <li><a href="#create-a-project">Create a project</a></li>
-        <li><a href="#create-your-first-content">Create your first content</a></li>
-        <li><a href="#deploy-in-github">Deploy in Github</a></li>
-        <li><a href="#debugging">Debugging</a></li>
-      </ul>
-    </li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#choose-a-hugo-theme">Choose a Hugo Theme</a></li>
+    <li><a href="#create-a-project">Create a project</a></li>
+    <li><a href="#create-your-first-content">Create your first content</a></li>
+    <li><a href="#deploy-in-github">Deploy in Github</a></li>
+    <li><a href="#debugging">Debugging</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
+</div>
 
 <h2 id="introduction">Introduction</h2>
-<p>I thought to build a personal website several times, but failed to do it. At one weekend of December, 2022 I decided to complete this website project before the new year 2023. I started by  searching &ldquo;create a personal website&rdquo; in youtube. The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes. That&rsquo;s great. I was excited about it.</p>
+<p>I thought to build a personal website several times but failed to do it. On one weekend in December 2022, I decided to complete this website project before the new year 2023. I started by searching &ldquo;create a personal website&rdquo; on youtube.The algorithm recommends videos with Hugo. My first thought 🤔: since when Hugo Boss started to build websites instead of selling expensive clothes 😄. Some videos promise to do it with Hugo within 10 minutes. That&rsquo;s great. I was excited about it.</p>
 <p>The main reasons I want to have a personal website are:</p>
 <ul>
-<li>writing blogs: I continue learning new skills and technologies. I want to summarize and document them down by writing blogs.</li>
-<li>digital portfolie: showcase my past projects and share knowledge.</li>
+<li>a place to write blogs: I continue learning new skills and technologies. I want to summarize and document them by writing blogs.</li>
+<li>digital portfolio: showcase my past projects and share knowledge.</li>
 </ul>
-<p>Hugo is a static site generator which allows website authors to create blogs or pages in Markdown. So it&rsquo;s suitable for me. You can host it freely in <a href="https://pages.github.com/">Github pages</a>. What&rsquo;s more, there are hundreds of <a href="https://themes.gohugo.io/">Hugo themes</a> ready to use for various purpose. Sounds cool? And guess what? I spent 10 minutes to watch that youtube turorial but the rest of weekend to figure it what&rsquo;s wrong with one error by deploying. I will share my guide so that you don&rsquo;t have to go through all the pain I went throught.</p>
+<p>Hugo is a static site generator that allows website authors to create blogs or pages in Markdown. So it&rsquo;s suitable for me. You can host it freely in <a href="https://pages.github.com/">Github pages</a>. What&rsquo;s more, there are hundreds of <a href="https://themes.gohugo.io/">Hugo themes</a> ready to use for various purposes. Sounds cool? And guess what? I spent 10 minutes watching that youtube tutorial but the rest of the weekend to figure it what was wrong with one error by deploying. I will share my guide so that you don&rsquo;t have to go through all the pain I went through.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>Hugo is pretty cool and seems easier, you are expected to already know some basic knowledge of html, command line, git etc. It requires investing time to learn some things if you don&rsquo;t know them all.</p>
+<p>Hugo is pretty cool and much easier than building everything from scratch. You are expected to know some basic knowledge of HTML, command line, git, etc. It requires investing time to learn some things if you don&rsquo;t know them all.</p>
 <ul>
 <li><em>Installation of Hugo</em>  <br>
 Refer to the official documentation <a href="https://gohugo.io/installation/">Installation</a></li>
-<li><em>Basic knowledge of Markdown or HTML, css, command line and text editors</em>  <br>
-Both HTML and Markdown are supported content formats.</li>
-<li><em>One IDE, e.g. VS code</em></li>
-<li><em>A Github account</em> <br>
-<a href="https://pages.github.com/">https://pages.github.com/</a></li>
+<li><em>Basic knowledge of Markdown or HTML, CSS, and command line</em>  <br>
+Both HTML and Markdown have supported content formats.</li>
+<li><em>One text editor, e.g. VS code</em></li>
+<li><em>A Github account</em></li>
 <li><em>Knowledge of Git</em>   <br>
-Git is required to install a theme as a Git submodule, access commit information from a local repository and host your site.</li>
+Git is required to install a theme as a Git submodule, access commit information from a local repository, and host your site.</li>
 </ul>
 <h2 id="choose-a-hugo-theme">Choose a Hugo Theme</h2>
-<p>You can find one suitable Hugo theme <a href="https://themes.gohugo.io/">hier</a>. Either for a portfolio, or company, there are plenty of template themes to choose. I&rsquo;ve chosen <a href="https://themes.gohugo.io/themes/hugo-tranquilpeak-theme/">hugo tranquilpeak theme</a>.</p>
+<p>You can find one suitable Hugo theme <a href="https://themes.gohugo.io/">hier</a>. Either for a portfolio or company, there are plenty of template themes to choose from. I&rsquo;ve chosen <a href="https://themes.gohugo.io/themes/hugo-tranquilpeak-theme/">hugo tranquilpeak theme</a>.</p>
 <h2 id="create-a-project">Create a project</h2>
 <ol>
-<li>Create a folder in your local PC.
+<li>Create a folder on your local PC.
 If you want to use any hugo theme, you can do it either with git clone or git submodule. git submodule makes it easier to update this theme if you have your Hugo site in git as well.</li>
 </ol>
 <p>git submodule is recommended. You can always copy the layouts to overwrite the default theme.</p>
-<pre tabindex="0"><code>mkdir hugo-site
-hugo new site my-hugo-site
-cd my-hugo-site
-git init
-## Add theme
-git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/hugo-tranquilpeak-theme
-echo &#34;theme = &#39;hugo-tranquilpeak-theme&#39;&#34; &gt;&gt; config.toml
-hugo server
-</code></pre><p>git clone the theme under the folder themes. Please don&rsquo;t forget to remove .git.</p>
-<h2 id="create-your-first-content">Create your first content</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Make a new directory</span>
+</span></span><span style="display:flex;"><span>mkdir hugo-site
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new hugo site </span>
+</span></span><span style="display:flex;"><span>hugo new site my-hugo-site
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Go to the root of your hugo site project</span>
+</span></span><span style="display:flex;"><span>cd my-hugo-site
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize an empty Git repository in the root direcotry</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add a template theme into themes directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Please change the github url to your desired theme url</span>
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/hugo-tranquilpeak-theme
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add a line about theme in the config file</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;theme = &#39;hugo-tranquilpeak-theme&#39;&#34;</span> &gt;&gt; config.toml
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start Hugo&#39;s developement server to view the site, -d means see drafts. </span>
+</span></span><span style="display:flex;"><span>hugo server -d
+</span></span></code></pre></div><h2 id="create-your-first-content">Create your first content</h2>
 <pre tabindex="0"><code>hugo new posts/my-first-blog.md
 </code></pre><p>You can use markdown language to write content.</p>
 <h2 id="deploy-in-github">Deploy in Github</h2>
-<p>I tried two methods to deploy in Github.<br>
-The first one with public is recommended. I wrote down the second method for reference.</p>
+<p>A lot of youtube tutorials don&rsquo;t talk about the public folder at all. After reading and studying a lot of materials, I summarized two methods to deploy on Github Page.<br>
+The first one with the public is recommended. I wrote down the second method for reference.</p>
 <ol>
-<li>
-<p>Method:<br>
-With <code>Hugo</code> command you can publish your website.
-then enter Public folder and <code>git init</code>. Push this public folder to a github repository.<br>
-In this method, you will prepare two github repositories. One private repo is for the content and the public repo is for the publishing website.</p>
-</li>
-<li>
-<p>Method:<br>
+<li>Method:<br>
+In this method, you will prepare two Github repositories. One public repo is for the publishing website and one private repo is for the content.<br>
+For example,</li>
+</ol>
+<ul>
+<li><input disabled="" type="checkbox"> public repo called <strong>your-user-name-in-github.github.io</strong>.</li>
+<li><input disabled="" type="checkbox"> private repo called <strong>blog</strong></li>
+</ul>
+<p>In config.toml file change baseURL = &ldquo;<a href="https://your-user-name-in-github.github.io/%22">https://your-user-name-in-github.github.io/&quot;</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># At the root directory of the website project</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># publish website and generate public folder</span>
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enter public directory</span>
+</span></span><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize an empty git repository</span>
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Change branch to main</span>
+</span></span><span style="display:flex;"><span>git branch -M main
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add, commit all the changes in the public folder to remote github repository</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+</span></span><span style="display:flex;"><span>git push -u origin main
+</span></span></code></pre></div><p>If everything works well, you will see your website running on <em><a href="https://your-user-name-in-github.github.io">https://your-user-name-in-github.github.io</a></em>.</p>
+<ol start="2">
+<li>Method:<br>
 In the root folder create the folders called <strong>.github/workflows</strong>. Then create a file called <strong>gh-pages.yml</strong>.
-Then copy the following content to the yml file. Then git push all the changes in the root folder to github repository.</p>
-</li>
+Then copy the following content to the yml file. Then git push all the changes in the root folder to github repository.</li>
 </ol>
 <pre tabindex="0"><code>name: github pages
 
@@ -419,11 +446,20 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-</code></pre><h2 id="debugging">Debugging</h2>
-<p>You did all the steps above and wait the most exciting moment that the web is online. But there is an error.</p>
+</code></pre><p>from <a href="https://github.com/marketplace/actions/github-pages-action">github-pages-action</a></p>
+<h2 id="debugging">Debugging</h2>
+<p>You did all the steps above and wait for the most exciting moment when the web is online. If it doesn&rsquo;t work as you expected, you can do the following checks.</p>
 <ul>
-<li>In config.toml, do you add theme and change baseURL?</li>
-<li></li>
+<li>In config.toml, do you add a line about the theme and change baseURL?</li>
+<li>If the theme doesn&rsquo;t appear, did you use git clone the theme under the themes directory? If yes, don&rsquo;t forget to remove .git from the themes directory.</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>Your website is online and you can publish new content. You might want to add more functions, like comments on your posts, or data tracking via google analytics.<br>
+In my next blog, I will write about these.</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://gohugo.io/getting-started/quick-start/">https://gohugo.io/getting-started/quick-start/</a></li>
+<li><a href="https://github.com/marketplace/actions/github-pages-action">https://github.com/marketplace/actions/github-pages-action</a></li>
 </ul>
 
               
@@ -548,7 +584,7 @@ jobs:
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2022 Xia He-Bleinagel. All Rights Reserved
+    &copy; 2023 Xia He-Bleinagel. All Rights Reserved
   </span>
 </footer>
 
@@ -664,13 +700,13 @@ jobs:
     
     <h4 id="about-card-name">Xia He-Bleinagel</h4>
     
-      <div id="about-card-bio">Data Generalist Consultant</div>
+      <div id="about-card-bio">Data Generalist| From web tracking, data engineering, NLP, building and deploying ML models to cloud migration</div>
     
     
       <div id="about-card-job">
         <i class="fa fa-briefcase"></i>
         <br/>
-        Consultant|AI and data science
+        Consultant|AI and Data Science
       </div>
     
     
