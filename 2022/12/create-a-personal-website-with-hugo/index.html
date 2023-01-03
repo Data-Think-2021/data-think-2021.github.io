@@ -377,8 +377,8 @@ If you want to use any hugo theme, you can do it either with git clone or git su
 </span></span><span style="display:flex;"><span>git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/hugo-tranquilpeak-theme
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Add a line about theme in the config file</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;theme = &#39;hugo-tranquilpeak-theme&#39;&#34;</span> &gt;&gt; config.toml
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start Hugo&#39;s developement server to view the site, -d means see drafts. </span>
-</span></span><span style="display:flex;"><span>hugo server -d
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start Hugo&#39;s developement server to view the site, -D, --buildDraftinclude content marked as draft.</span>
+</span></span><span style="display:flex;"><span>hugo server -D
 </span></span></code></pre></div><h2 id="create-your-first-content">Create your first content</h2>
 <pre tabindex="0"><code>hugo new posts/my-first-blog.md
 </code></pre><p>You can use markdown language to write content.</p>
@@ -723,9 +723,7 @@ In my next blog, I will write about these.</p>
 
     
   
-    
-      <div id="cover" style="background-image:url('https://data-think-2021.github.io/img/sunset.jpg');"></div>
-    
+    <div id="cover" style="background-image:url('https://res.cloudinary.com/do5aglxsw/image/upload/v1672755237/blog-img/sunset_k3zwjb.jpg');"></div>
   
 
 
