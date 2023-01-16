@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xia He-Bleinagel</title>
-    <link>https://xiahe-bleinagel.com/</link>
+    <link>https://data-think-2021.github.io/</link>
     <description>Recent content on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://data-think-2021.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS IAM Day 1</title>
-      <link>https://xiahe-bleinagel.com/2023/01/aws-iam-day-1/</link>
+      <link>https://data-think-2021.github.io/2023/01/aws-iam-day-1/</link>
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://xiahe-bleinagel.com/2023/01/aws-iam-day-1/</guid>
+      <guid>https://data-think-2021.github.io/2023/01/aws-iam-day-1/</guid>
       <description>Do you ever think of getting AWS Cloud certificates? This is one of my 2023 resolutions. Let&amp;rsquo;s learn together. Day 1 is all about the best practices of AWS IAM.</description>
     </item>
     
     <item>
       <title>From A Stay-At-Home Mom To A Data Scientist</title>
-      <link>https://xiahe-bleinagel.com/2023/01/from-a-stay-at-home-mom-to-a-data-scientist/</link>
+      <link>https://data-think-2021.github.io/2023/01/from-a-stay-at-home-mom-to-a-data-scientist/</link>
       <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://xiahe-bleinagel.com/2023/01/from-a-stay-at-home-mom-to-a-data-scientist/</guid>
+      <guid>https://data-think-2021.github.io/2023/01/from-a-stay-at-home-mom-to-a-data-scientist/</guid>
       <description>Life goes up and down. Important is that you never give up. Everyone has a chance to achieve his/her goal. This is my story of how I got a tech job from a stay-at-home mom. Remember, you are the best.</description>
     </item>
     
     <item>
       <title>Create a Personal Website With Hugo</title>
-      <link>https://xiahe-bleinagel.com/2022/12/create-a-personal-website-with-hugo/</link>
+      <link>https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/</link>
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://xiahe-bleinagel.com/2022/12/create-a-personal-website-with-hugo/</guid>
+      <guid>https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/</guid>
       <description>I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.</description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>https://xiahe-bleinagel.com/about/</link>
+      <link>https://data-think-2021.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://xiahe-bleinagel.com/about/</guid>
+      <guid>https://data-think-2021.github.io/about/</guid>
       <description>Hi there, I&amp;rsquo;m Xia. I am a member of the AI &amp;amp; Data Analytics team focused on cloud application, data management, automation solution and AI. I see myself as a data generalist. I could gain knowledge and experience in many following areas:
 Cloud, AWS, Google cloud Data engineering (Database), Analytics engineering (Data warehouse) Machine learning/ statistics modelling Natural language processing, AI Dashboard / BI Data collection or data tracking with Google Analytics Contact me</description>
     </item>
     
     <item>
       <title>Contact me</title>
-      <link>https://xiahe-bleinagel.com/contact/</link>
+      <link>https://data-think-2021.github.io/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://xiahe-bleinagel.com/contact/</guid>
+      <guid>https://data-think-2021.github.io/contact/</guid>
       <description>You can get in touch with me via email and consult my professional profile on LinkedIn.</description>
     </item>
     
