@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>post on Xia He-Bleinagel</title>
-    <link>https://data-think-2021.github.io/categories/post/</link>
+    <link>https://xiahe-bleinagel.com/categories/post/</link>
     <description>Recent content in post on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://data-think-2021.github.io/categories/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/categories/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Create a Personal Website With Hugo</title>
-      <link>https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/</link>
+      <link>https://xiahe-bleinagel.com/2022/12/create-a-personal-website-with-hugo/</link>
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://data-think-2021.github.io/2022/12/create-a-personal-website-with-hugo/</guid>
+      <guid>https://xiahe-bleinagel.com/2022/12/create-a-personal-website-with-hugo/</guid>
       <description>I built a personal website with Hugo successfully. I want to write down some key points to share my learning experience. Hugo is a static site generator and super fast. We will build one site with a theme template in 10 minutes.</description>
     </item>
     
