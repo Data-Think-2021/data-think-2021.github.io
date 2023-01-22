@@ -6,7 +6,25 @@
     <description>Recent content in Categories on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digital Marketing</title>
+      <link>https://xiahe-bleinagel.com/categories/digital-marketing/</link>
+      <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/categories/digital-marketing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Analytics</title>
+      <link>https://xiahe-bleinagel.com/categories/google-analytics/</link>
+      <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/categories/google-analytics/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Hugo</title>
       <link>https://xiahe-bleinagel.com/categories/hugo/</link>
@@ -35,7 +53,7 @@
     </item>
     
     <item>
-      <title>career</title>
+      <title>Career</title>
       <link>https://xiahe-bleinagel.com/categories/career/</link>
       <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
       
@@ -44,7 +62,7 @@
     </item>
     
     <item>
-      <title>data science</title>
+      <title>Data science</title>
       <link>https://xiahe-bleinagel.com/categories/data-science/</link>
       <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
       

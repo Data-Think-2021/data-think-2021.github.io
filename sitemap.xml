@@ -2,13 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xiahe-bleinagel.com/tags/api/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/automation/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/digital-marketing/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/google-analytics/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/google-analytics/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/2023/01/introduction-of-google-analytics-api/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/posts/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/</loc>
+    <lastmod>2023-01-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiahe-bleinagel.com/2023/01/a-custom-domain-for-my-hugo-personal-website-hosted-on-github-pages/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/amazon-route-53/</loc>
-    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/categories/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/github-pages/</loc>
@@ -18,15 +45,6 @@
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/categories/hugo/</loc>
-    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/posts/</loc>
-    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/tags/</loc>
-    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/aws/</loc>
