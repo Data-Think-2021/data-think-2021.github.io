@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xiahe-bleinagel.com/tags/ai/</loc>
+    <lastmod>2023-01-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/ai/</loc>
+    <lastmod>2023-01-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiahe-bleinagel.com/categories/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
@@ -22,6 +28,24 @@
   </url><url>
     <loc>https://xiahe-bleinagel.com/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/data-engineering/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/docker/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/postgres/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/terraform/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/2023/01/week-1-data-engineering-zoomcamp-notes/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/api/</loc>
     <lastmod>2023-01-19T00:00:00+00:00</lastmod>

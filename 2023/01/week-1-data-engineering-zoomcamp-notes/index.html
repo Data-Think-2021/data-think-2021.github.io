@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 1 Data Engineering Zoomcamp Notes",
+  
+  "image": "//res.cloudinary.com/do5aglxsw/image/upload/v1675025624/Data-Engineering/dataengineering-large_slhv4y.jpg",
+  
+  "datePublished": "2023-01-26T00:00:00Z",
+  "dateModified": "2023-01-26T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Xia He-Bleinagel",
+    
+    "image": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/xiahe-bleinagel.com\/2023\/01\/week-1-data-engineering-zoomcamp-notes\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xia He-Bleinagel",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    }
+    
+  },
+  "description": "During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud.",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.108.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Xia He-Bleinagel">
+<meta name="keywords" content="">
+<meta name="description" content="During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud.">
+
+
+<meta property="og:description" content="During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 1 Data Engineering Zoomcamp Notes">
+<meta name="twitter:title" content="Week 1 Data Engineering Zoomcamp Notes">
+<meta property="og:url" content="https://xiahe-bleinagel.com/2023/01/week-1-data-engineering-zoomcamp-notes/">
+<meta property="twitter:url" content="https://xiahe-bleinagel.com/2023/01/week-1-data-engineering-zoomcamp-notes/">
+<meta property="og:site_name" content="Xia He-Bleinagel">
+<meta property="og:description" content="During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud.">
+<meta name="twitter:description" content="During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-01-26T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-01-26T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Data Engineering">
+    
+  
+  
+    
+      <meta property="article:tag" content="Docker">
+    
+      <meta property="article:tag" content="Terraform">
+    
+      <meta property="article:tag" content="Postgres">
+    
+      <meta property="article:tag" content="Data Engineering Zoomcamp">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+
+
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675025624/Data-Engineering/dataengineering-large_slhv4y.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675025624/Data-Engineering/dataengineering-large_slhv4y.jpg">
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675025624/Data-Engineering/dataengineering-small_oftz0k.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675025624/Data-Engineering/dataengineering-small_oftz0k.jpg">
+
+
+    <title>Week 1 Data Engineering Zoomcamp Notes</title>
+
+    <link rel="icon" href="https://xiahe-bleinagel.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiahe-bleinagel.com/2023/01/week-1-data-engineering-zoomcamp-notes/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiahe-bleinagel.com/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVKGJSSLNL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-PVKGJSSLNL', { 'anonymize_ip': false });
+}
+</script>
+
+     
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiahe-bleinagel.com/" aria-label="Go to homepage">Xia He-Bleinagel</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiahe-bleinagel.com/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiahe-bleinagel.com/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xia He-Bleinagel</h4>
+        
+          <h5 class="sidebar-profile-bio">Data Science Generalist |Data Engineer |Digital Analyst</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/projects" title="Projects">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Data-Think-2021" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/contact" title="Contact">
+    
+      <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Contact</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//res.cloudinary.com/do5aglxsw/image/upload/v1675025624/Data-Engineering/dataengineering-large_slhv4y.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Week 1 Data Engineering Zoomcamp Notes
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-26T00:00:00Z">
+        
+  January 26, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/data-engineering">Data Engineering</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <div>
+<h1 id="table-of-contents"></h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker--postgres">Docker + Postgres</a>
+      <ul>
+        <li><a href="#introduction-of-the-docker">Introduction of the Docker</a></li>
+        <li><a href="#introduction-of-postgres">Introduction of Postgres</a></li>
+        <li><a href="#docker-command">Docker command</a></li>
+        <li><a href="#ingesting-data-into-the-database">Ingesting data into the database</a></li>
+        <li><a href="#running-postgres-locally-with-docker">Running Postgres locally with Docker</a></li>
+        <li><a href="#pgadmin">pgAdmin</a></li>
+        <li><a href="#docker-network">Docker Network</a></li>
+        <li><a href="#docker-compose">Docker-compose</a></li>
+      </ul>
+    </li>
+    <li><a href="#terraform--google-cloud-platform">Terraform + Google Cloud Platform</a>
+      <ul>
+        <li><a href="#google-account">Google Account</a></li>
+        <li><a href="#install-google-sdk">Install Google SDK</a></li>
+        <li><a href="#terraform">Terraform</a></li>
+        <li><a href="#setting-up-on-vm">Setting up on VM</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+<p>The Data Engineering Zoomcamp began on January 16, 2023. It offers free instruction on the most widely used technologies and tools in data engineering and the cloud. During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud. Key topics covered in week 1 include: <strong>Docker, Postgres, Docker-compose, Terraform, Google Cloud, and Google VM</strong>.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675025899/Data-Engineering/data-engineering-architecture_gbyej5.png" alt="Architecture diagram"></p>
+<h2 id="docker--postgres">Docker + Postgres</h2>
+<h3 id="introduction-of-the-docker">Introduction of the Docker</h3>
+<p>Docker is an open-source platform that allows developers to easily create, deploy, and run applications in containers. Containers are lightweight, portable, and self-sufficient environments that allow applications to run consistently across different environments.</p>
+<h3 id="introduction-of-postgres">Introduction of Postgres</h3>
+<p>Postgres is a versatile database that is designed for transactional purposes rather than analytics. Despite this, it is powerful and sometimes employed as a data warehouse solution.</p>
+<h3 id="docker-command">Docker command</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span>docker run hello-world<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># -it: run iterative mode</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker run -it ubuntu bash  <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker run -it python:3.9<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker run -it --entrypoint<span style="color:#f92672">=</span>bash python:3.9<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># build an image called taxi-ingest:v001</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker build -t taxi-ingest:v001 .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker run -it test:pandas<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="ingesting-data-into-the-database">Ingesting data into the database</h3>
+<p>Once you have created this Dockerfile, you can build the image by running the command docker build -t mypostgres . and then run it with docker run -p 5432:5432 mypostgres. This will start the container and map port 5432 on the host to port 5432 in the container.
+Dockerfile</p>
+<pre tabindex="0"><code>FROM python:3.9.1
+
+RUN apt-get install wget
+RUN pip install pandas sqlalchemy psycopg2
+
+WORKDIR /app
+COPY ingest_data.py ingest_data.py
+
+ENTRYPOINT [ &#34;python&#34;, &#34;ingest_data.py&#34; ]
+</code></pre><p>By running the above commands, your dataset will be loaded and ready for use in the postgres container.</p>
+<h3 id="running-postgres-locally-with-docker">Running Postgres locally with Docker</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run -it <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -e POSTGRES_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;root&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -e POSTGRES_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;root&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -e POSTGRES_DB<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ny_taxi&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -v <span style="color:#e6db74">&#34;./ny-taxi-volume:/var/lib/postgresql/data&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -p 5432:5432 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  postgres:13
+</span></span></code></pre></div><p>To interact with Postgres in command line we can install <a href="https://www.pgcli.com/install">pgcli</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Install pgcli with pip</span>
+</span></span><span style="display:flex;"><span>pip install pgcli
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Connect with the postgres</span>
+</span></span><span style="display:flex;"><span>pgcli -h localhost -p <span style="color:#ae81ff">5432</span> -u root -d ny_taxi
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check with tables</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\d</span>t
+</span></span></code></pre></div><h3 id="pgadmin">pgAdmin</h3>
+<p>It’s not convenient to use pgcli for data exploration and querying. Instead, we will use <a href="https://www.pgadmin.org/">pgAdmin</a>, the standard graphical tool for postgres. We can run it with docker. However, this docker container can’t access the postgres container. We need to link them.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run -it <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -e PGADMIN_DEFAULT_EMAIL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;admin@admin.com&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -e PGADMIN_DEFAULT_PASSWORD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;root&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -p 8080:80 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  dpage/pgadmin4
+</span></span></code></pre></div><p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675029121/Data-Engineering/pgadmin_nlqhcd.png" alt="pgAdmin UI"></p>
+<h3 id="docker-network">Docker Network</h3>
+<pre tabindex="0"><code># To link the database with pgadmin
+# Connect a container to a network
+docker network create pgnetwork
+
+docker run -it \
+  -e POSTGRES_USER=&#34;root&#34; \
+  -e POSTGRES_PASSWORD=&#34;root&#34; \
+  -e POSTGRES_DB=&#34;ny_taxi&#34; \
+  -v &#34;$(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data&#34;\
+  -p 5432:5432 \
+  --name pgdatabase \
+  --network pgnetwork \
+  postgres:13
+
+docker run -it \
+  -e PGADMIN_DEFAULT_EMAIL=&#34;admin@admin.com&#34; \
+  -e PGADMIN_DEFAULT_PASSWORD=&#34;root&#34; \
+  -p 8080:80 \
+  --name pgadmin \
+  --network pgnetwork \
+  dpage/pgadmin4
+
+# Ingest data
+docker run -it \
+    --network=pgnetwork \
+    taxi-ingest:v001 \
+        --user=root \
+        --password=root \
+        --host=pgdatabase \
+        --port=5432 \
+        --db=ny_taxi \
+        --table_name=green_taxi_trips \
+        --url=${URL}
+</code></pre><p>It works, but we need to keep two terminal tabs running, manually create a network - and a bunch of other things. Let’s use docker compose that will take care of that.</p>
+<h3 id="docker-compose">Docker-compose</h3>
+<p>Docker Compose is a powerful tool that makes it easy to define and run multi-container Docker applications, simplifying the process of development, testing, and deployment. It allows developers to define all the services and dependencies of an application in a single file, and then start, stop, and manage those services with simple commands. Docker Compose also allows developers to define networks and volumes that can be shared between services. The docker-compose.yml file is a YAML file that defines the services, networks, and volumes needed for the application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Start the application in &#34;detached&#34; mode: the containers run in the background and the terminal is free for other commands.</span>
+</span></span><span style="display:flex;"><span>docker-compose up -d
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Stop and remove the containers</span>
+</span></span><span style="display:flex;"><span>docker-compose down
+</span></span></code></pre></div><p>docker-compose.yml</p>
+<pre tabindex="0"><code>services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - &#34;./ny_taxi_postgres_data:/var/lib/postgresql/data:rw&#34;
+    ports:
+      - &#34;5432:5432&#34;
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - &#34;8080:80&#34;
+</code></pre><h2 id="terraform--google-cloud-platform">Terraform + Google Cloud Platform</h2>
+<h3 id="google-account">Google Account</h3>
+<p>Step 1: Create a new google account and get free 300€.</p>
+<p>Step 2: Create a new project.</p>
+<p>Step 3: Create a service account</p>
+<ul>
+<li>Assign the role as Viewer.</li>
+</ul>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675029121/Data-Engineering/iam-role_dz9gwk.png" alt="role"></p>
+<ul>
+<li>Create and download the key.</li>
+</ul>
+<h3 id="install-google-sdk">Install Google SDK</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>~ ./google-cloud-sdk/install.sh
+</span></span><span style="display:flex;"><span>Welcome to the Google Cloud CLI!
+</span></span><span style="display:flex;"><span>~ gcloud init
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export GOOGLE_APPLICATION_CREDENTIALS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;path/to/your/service-account-authkeys&gt;.json&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Refresh token/session, and verify authentication</span>
+</span></span><span style="display:flex;"><span>gcloud auth application-default login
+</span></span></code></pre></div><h3 id="terraform">Terraform</h3>
+<p><a href="https://www.terraform.io/">Terraform</a> is an open-source infrastructure as code software tool that enables you to safely and predictably create, change, and improve infrastructure. First of all, follow the instruction to <a href="https://developer.hashicorp.com/terraform/downloads?ajs_aid=1ddc0b9c-f34a-4de4-8a92-f83ddc38f58b&amp;product_intent=terraform">install Terraform</a>.</p>
+<p>Command:</p>
+<ol>
+<li><code>terraform init</code>:
+<ul>
+<li>Initializes &amp; configures the backend, installs plugins/providers, &amp; checks out an existing configuration from a version control</li>
+</ul>
+</li>
+<li><code>terraform plan</code>:
+<ul>
+<li>Matches/previews local changes against a remote state, and proposes an Execution Plan.</li>
+</ul>
+</li>
+<li><code>terraform apply</code>:
+<ul>
+<li>Asks for approval to the proposed plan, and applies changes to cloud</li>
+</ul>
+</li>
+<li><code>terraform destroy</code>
+<ul>
+<li>Removes your stack from the Cloud</li>
+</ul>
+</li>
+</ol>
+<h3 id="setting-up-on-vm">Setting up on VM</h3>
+<p>Step 1: Generate ssh key
+Follow the <a href="https://cloud.google.com/compute/docs/connect/create-ssh-keys">documentation</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 1. Install anaconda</span>
+</span></span><span style="display:flex;"><span>wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bash Anaconda3-2022.10-Linux-x86_64.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. Configure VScode to access cloud VM</span>
+</span></span><span style="display:flex;"><span>.ssh touch config
+</span></span><span style="display:flex;"><span>.ssh code config
+</span></span><span style="display:flex;"><span>.ssh ssh data-engineering-demo
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3. Install Docker in VM </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ sudo apt-get update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ sudo apt-get install docker.io
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4. Clone course repo</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ git clone https://github.com/DataTalksClub/data-engineering-zoomcamp.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5. Run docker without sudo / manage docker as non-root user https://docs.docker.com/engine/install/linux-postinstall/ </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ sudo groupadd docker
+</span></span><span style="display:flex;"><span>groupadd: group <span style="color:#e6db74">&#39;docker&#39;</span> already exists
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ sudo usermod -aG docker $USER
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ newgrp docker
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> xia@data--engineering-demo:~$ docker run hello-world
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 6. Sftp google credentials to VM</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> ➜  sftp data-engineering-demo
+</span></span></code></pre></div><p>Reference:</p>
+<ul>
+<li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp">Data Engineering Zoomcamp in Github</a></li>
+</ul>
+<p>❤️ Please visit my <a href="https://xiahe-bleinagel.com/">home page</a> for more contents. I look forward to connecting with you via <a href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/">LinkedIn</a>.</p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/docker/">Docker</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/terraform/">Terraform</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/postgres/">Postgres</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/">Data Engineering Zoomcamp</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/01/maximizing-efficiency-with-chatgpt-my-experience/" data-tooltip="Maximizing Efficiency with ChatGPT: My Experience" aria-label="NEXT: Maximizing Efficiency with ChatGPT: My Experience">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/01/introduction-of-google-analytics-api/" data-tooltip="Introduction of Google Analytics API" aria-label="PREVIOUS: Introduction of Google Analytics API">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiahe-bleinagel.com\/2023\/01\/week-1-data-engineering-zoomcamp-notes\/';
+        
+          this.page.identifier = '\/2023\/01\/week-1-data-engineering-zoomcamp-notes\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'data-think';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 Xia He-Bleinagel. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/01/maximizing-efficiency-with-chatgpt-my-experience/" data-tooltip="Maximizing Efficiency with ChatGPT: My Experience" aria-label="NEXT: Maximizing Efficiency with ChatGPT: My Experience">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/01/introduction-of-google-analytics-api/" data-tooltip="Introduction of Google Analytics API" aria-label="PREVIOUS: Introduction of Google Analytics API">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F01%2Fweek-1-data-engineering-zoomcamp-notes%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F01%2Fweek-1-data-engineering-zoomcamp-notes%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F01%2Fweek-1-data-engineering-zoomcamp-notes%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xia He-Bleinagel</h4>
+    
+      <div id="about-card-bio">Data Science Generalist |Data Engineer |Digital Analyst</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Consultant|AI and Data Science
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Berlin
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://res.cloudinary.com/do5aglxsw/image/upload/v1672755237/blog-img/sunset_k3zwjb.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiahe-bleinagel.com/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

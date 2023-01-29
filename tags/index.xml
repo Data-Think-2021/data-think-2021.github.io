@@ -8,11 +8,56 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AI</title>
+      <link>https://xiahe-bleinagel.com/tags/ai/</link>
+      <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ChatGPT</title>
       <link>https://xiahe-bleinagel.com/tags/chatgpt/</link>
       <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://xiahe-bleinagel.com/tags/chatgpt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Engineering Zoomcamp</title>
+      <link>https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://xiahe-bleinagel.com/tags/docker/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Postgres</title>
+      <link>https://xiahe-bleinagel.com/tags/postgres/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/postgres/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terraform</title>
+      <link>https://xiahe-bleinagel.com/tags/terraform/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/terraform/</guid>
       <description></description>
     </item>
     

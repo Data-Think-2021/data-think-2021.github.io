@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Week 1 Data Engineering Zoomcamp Notes</title>
+      <link>https://xiahe-bleinagel.com/2023/01/week-1-data-engineering-zoomcamp-notes/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/2023/01/week-1-data-engineering-zoomcamp-notes/</guid>
+      <description>During week 1, participants learned how to build a data pipeline and retrieve and ingest data using Docker, Postgres, Docker-compose, Terraform and Google Cloud.</description>
+    </item>
+    
+    <item>
       <title>Introduction of Google Analytics API</title>
       <link>https://xiahe-bleinagel.com/2023/01/introduction-of-google-analytics-api/</link>
       <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
