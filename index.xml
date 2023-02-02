@@ -6,7 +6,16 @@
     <description>Recent content on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 2 Data Engineering Zoomcamp Notes: Prefect</title>
+      <link>https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/</link>
+      <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/</guid>
+      <description>In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!</description>
+    </item>
+    
     <item>
       <title>Maximizing Efficiency with ChatGPT: My Experience</title>
       <link>https://xiahe-bleinagel.com/2023/01/maximizing-efficiency-with-chatgpt-my-experience/</link>

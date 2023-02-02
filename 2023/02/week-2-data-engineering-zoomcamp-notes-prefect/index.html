@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 2 Data Engineering Zoomcamp Notes: Prefect",
+  
+  "image": "//res.cloudinary.com/do5aglxsw/image/upload/v1675203330/Data-Engineering/Orchestration-small_imoj1v.jpg",
+  
+  "datePublished": "2023-02-02T00:00:00Z",
+  "dateModified": "2023-02-02T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Xia He-Bleinagel",
+    
+    "image": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/xiahe-bleinagel.com\/2023\/02\/week-2-data-engineering-zoomcamp-notes-prefect\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xia He-Bleinagel",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    }
+    
+  },
+  "description": "In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.108.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Xia He-Bleinagel">
+<meta name="keywords" content="">
+<meta name="description" content="In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!">
+
+
+<meta property="og:description" content="In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 2 Data Engineering Zoomcamp Notes: Prefect">
+<meta name="twitter:title" content="Week 2 Data Engineering Zoomcamp Notes: Prefect">
+<meta property="og:url" content="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/">
+<meta property="twitter:url" content="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/">
+<meta property="og:site_name" content="Xia He-Bleinagel">
+<meta property="og:description" content="In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!">
+<meta name="twitter:description" content="In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-02-02T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-02-02T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Data Engineering">
+    
+  
+  
+    
+      <meta property="article:tag" content="Prefect">
+    
+      <meta property="article:tag" content="Docker">
+    
+      <meta property="article:tag" content="Google Cloud">
+    
+      <meta property="article:tag" content="Data Engineering Zoomcamp">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+
+
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675203330/Data-Engineering/Orchestration-small_imoj1v.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675203330/Data-Engineering/Orchestration-small_imoj1v.jpg">
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675203330/Data-Engineering/Orchestration-small_imoj1v.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1675203330/Data-Engineering/Orchestration-small_imoj1v.jpg">
+
+
+    <title>Week 2 Data Engineering Zoomcamp Notes: Prefect</title>
+
+    <link rel="icon" href="https://xiahe-bleinagel.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiahe-bleinagel.com/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVKGJSSLNL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-PVKGJSSLNL', { 'anonymize_ip': false });
+}
+</script>
+
+     
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiahe-bleinagel.com/" aria-label="Go to homepage">Xia He-Bleinagel</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiahe-bleinagel.com/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiahe-bleinagel.com/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xia He-Bleinagel</h4>
+        
+          <h5 class="sidebar-profile-bio">Data Science Generalist |Data Engineer |Digital Analyst</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/projects" title="Projects">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Data-Think-2021" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/contact" title="Contact">
+    
+      <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Contact</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//res.cloudinary.com/do5aglxsw/image/upload/v1675203330/Data-Engineering/Orchestration-small_imoj1v.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Week 2 Data Engineering Zoomcamp Notes: Prefect
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-02-02T00:00:00Z">
+        
+  February 2, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/data-engineering">Data Engineering</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <div>
+<h1 id="table-of-contents"></h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction-to-workflow-orchestration">Introduction to Workflow Orchestration</a></li>
+    <li><a href="#prefect">Prefect</a>
+      <ul>
+        <li><a href="#install-prefect">Install Prefect</a></li>
+        <li><a href="#prefect-flow--task">Prefect flow &amp; task</a></li>
+        <li><a href="#orion-ui">Orion UI</a></li>
+        <li><a href="#blocks-and-collections">Blocks and collections</a></li>
+      </ul>
+    </li>
+    <li><a href="#etl-with-gcp--prefect">ETL with GCP &amp; Prefect</a>
+      <ul>
+        <li><a href="#etl-from-gcs-to-bq">ETL from gcs to bq</a></li>
+      </ul>
+    </li>
+    <li><a href="#prefect-flow-deployment">Prefect flow deployment</a>
+      <ul>
+        <li><a href="#method-1-deployment-using-cli">Method 1: deployment using cli</a></li>
+        <li><a href="#method-2-deployment-with-python-file">Method 2: deployment with python file</a></li>
+        <li><a href="#create-notification">Create notification</a></li>
+        <li><a href="#schedule-flow">Schedule flow</a></li>
+        <li><a href="#store-code-in-docker-image">Store code in docker image</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+<p>To recap the week 1, we downloaded the file from the website, parquetize it and upload to Google cloud storage manually. In week 2 we will use work orchestration tool to manage the data workflow.</p>
+<h2 id="introduction-to-workflow-orchestration">Introduction to Workflow Orchestration</h2>
+<p>Work orchestration refers to the coordination and management of multiple tasks and processes in a workflow. The goal of work orchestration is to automate and streamline tasks to improve efficiency, reduce errors, and increase productivity.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328777/week-2-de-Prefect/DAG_er71m3.png" alt="Orchestration"></p>
+<p>A Directed Acyclic Graph (DAG) is a commonly used model for representing workflows in work orchestration. In a DAG, tasks are represented as nodes, and the dependencies between tasks are represented as directed edges connecting the nodes. The directed edges represent the order in which tasks must be executed, and the acyclic nature of the graph ensures that there are no circular dependencies.</p>
+<p>There are popular tools in the market:</p>
+<ul>
+<li>Luigi</li>
+<li>Apache Airflow</li>
+<li>Prefect</li>
+</ul>
+<p>We will learn Prefect this week.</p>
+<h2 id="prefect">Prefect</h2>
+<p><a href="https://www.prefect.io/">Prefect</a> is an open-source work orchestration and automation platform. It provides hybrid execution model cloud and on-prem.</p>
+<h3 id="install-prefect">Install Prefect</h3>
+<p>The first step to getting started with Prefect is to installing the Prefect python package.</p>
+<ol>
+<li>Simply <code>pip install -U prefect</code> following the <a href="https://docs.prefect.io/getting-started/installation/">official installation docs</a>.</li>
+<li>or follow in the course <code>pip install -r requirement.txt</code>
+requirements.txt</li>
+</ol>
+<pre tabindex="0"><code>pandas==1.5.2
+prefect==2.7.7
+prefect-sqlalchemy==0.2.2
+prefect-gcp[cloud_storage]==0.2.4
+protobuf==4.21.11
+pyarrow==10.0.1
+pandas-gbq==0.18.1
+psycopg2-binary==2.9.5
+sqlalchemy==1.4.46
+</code></pre><p>Once the installation is done, you can check the version by typing <code>prefect version</code>in the command line.</p>
+<h3 id="prefect-flow--task">Prefect flow &amp; task</h3>
+<p>A &ldquo;Flow&rdquo; in Prefect refers to a directed acyclic graph (DAG) of tasks that represent the steps of a workflow. A &ldquo;Task&rdquo; in Prefect is a unit of work that performs a specific action and can be combined with other tasks to create a complete workflow.</p>
+<p>We will breakdown &ldquo;ingest-data&rdquo; code from week 1 to prefect ETL tasks. It is much clear. We add task decorator before each task. For more info about python decorator, please refer <a href="https://wiki.python.org/moin/PythonDecorators">pythondecorators</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>(log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, cache_key_fn<span style="color:#f92672">=</span>task_input_hash, cache_expiration<span style="color:#f92672">=</span>timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract_data</span>(url):
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">....</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>(log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transform_data</span>(df):
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.....</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>(log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ingest_data</span>(df, user, password, host, port, db, table_name):  
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.......</span>
+</span></span></code></pre></div><p>Then we put the the tasks in the main flow function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@flow</span>(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Subflow&#34;</span>, log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log_subflow</span>(table_name: str):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Logging Subflow for: </span><span style="color:#e6db74">{</span>table_name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@flow</span>(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ingest Data&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main_flow</span>(table_name: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yellow_taxi_trips&#34;</span>):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    csv_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz&#34;</span>
+</span></span><span style="display:flex;"><span>    log_subflow(table_name)
+</span></span><span style="display:flex;"><span>    raw_data <span style="color:#f92672">=</span> extract_data(csv_url)
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> transform_data(raw_data)
+</span></span><span style="display:flex;"><span>    load_data(table_name, data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main_flow(table_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yellow_trips&#34;</span>)
+</span></span></code></pre></div><p>When we execute the code <code>python ingest_data_flow.py</code>, we can see the logs in the terminal.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328776/week-2-de-Prefect/ingest-data-2_erjjcn.png" alt="ingest_data_flow"></p>
+<h3 id="orion-ui">Orion UI</h3>
+<p>We can start Orion UI with the command <code>prefect orion start</code>. Then we can see the UI dashboard at http://127.0.0.1:4200
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328774/week-2-de-Prefect/prefect-orion-start_xn5cyo.png" alt="start orion"></p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328777/week-2-de-Prefect/create-blocks-ui_hpxgbl.png" alt="UI"></p>
+<h3 id="blocks-and-collections">Blocks and collections</h3>
+<p>In the Orion dashboard you can see Flow runs, flows, deployments, work queues, block and etc.
+Blocks are very important components which provide an interface for interacting with external systems, such as docker, GCS, Github, Azure and much more.</p>
+<p>Postgres connector:
+step 1: create a block.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328774/week-2-de-Prefect/sqlalchemy-connector_xqxcqh.png" alt="pgadmin"></p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328775/week-2-de-Prefect/postgres-block_ch3nc0.png" alt="postgres block"></p>
+<p>step 2: copy the code to the flow.
+Once the block is done, you can import the code.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328775/week-2-de-Prefect/postgres-block-connector_d69z8e.png" alt="step 2"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>postgres_url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;postgresql://</span><span style="color:#e6db74">{</span>user<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">{</span>password<span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">{</span>host<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">{</span>port<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>db<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(postgres_url)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>(log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ingest_data</span>(df, table_name):   
+</span></span><span style="display:flex;"><span>   connection_block <span style="color:#f92672">=</span> SqlAlchemyConnector<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;postgres-connector&#34;</span>)
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">with</span> connection_block<span style="color:#f92672">.</span>get_connection(begin<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>) <span style="color:#66d9ef">as</span> engine:
+</span></span><span style="display:flex;"><span>       df<span style="color:#f92672">.</span>head(n<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>to_sql(name<span style="color:#f92672">=</span>table_name, con<span style="color:#f92672">=</span>engine, if_exists<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;replace&#39;</span>)
+</span></span><span style="display:flex;"><span>       df<span style="color:#f92672">.</span>to_sql(name<span style="color:#f92672">=</span>table_name, con<span style="color:#f92672">=</span>engine, if_exists<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;append&#39;</span>)
+</span></span></code></pre></div><h2 id="etl-with-gcp--prefect">ETL with GCP &amp; Prefect</h2>
+<p>Step 1: Register the block with command <code>prefect block register -m prefect_gcp</code></p>
+<p>Step 2: Create a google cloud storage bucket block connector
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328778/week-2-de-Prefect/create-gcs-bucket-block_jlzoja.png" alt="gcs"></p>
+<p>Step 3: Add GCS credential
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328776/week-2-de-Prefect/gcp-creds-block_kfgryn.png" alt="credential"></p>
+<p>Step 4: Execute the code etl-web-to-gcs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">write_gcs</span>(path: Path) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Upload local parquet file to GCS&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    gcs_block <span style="color:#f92672">=</span> GcsBucket<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;zoom-gcs&#34;</span>)
+</span></span><span style="display:flex;"><span>    gcs_block<span style="color:#f92672">.</span>upload_from_path(from_path<span style="color:#f92672">=</span>path, to_path<span style="color:#f92672">=</span>path)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span></code></pre></div><h3 id="etl-from-gcs-to-bq">ETL from gcs to bq</h3>
+<p>To load data from gcs to big query, we did the same step as before and adjusted our code when necessary.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>(log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>) <span style="color:#75715e"># , cache_key_fn=task_input_hash, cache_expiration=timedelta(days=1)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract_from_gcs</span>(color: str, year: int, month: int) <span style="color:#f92672">-&gt;</span> Path:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Download trip data from GCS&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    gcs_path <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;data/</span><span style="color:#e6db74">{</span>color<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>color<span style="color:#e6db74">}</span><span style="color:#e6db74">_tripdata_</span><span style="color:#e6db74">{</span>year<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">{</span>month<span style="color:#e6db74">:</span><span style="color:#e6db74">02</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.parquet&#34;</span>
+</span></span><span style="display:flex;"><span>    gcp_bucket_block <span style="color:#f92672">=</span> GcsBucket<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;dezoom-gcs&#34;</span>)
+</span></span><span style="display:flex;"><span>    gcp_bucket_block<span style="color:#f92672">.</span>get_directory(
+</span></span><span style="display:flex;"><span>        from_path<span style="color:#f92672">=</span>gcs_path
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_parquet(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;data-engineering-demo/</span><span style="color:#e6db74">{</span>gcs_path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> df
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@task</span>(log_prints<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, retries<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">write_bq</span>(df: pd<span style="color:#f92672">.</span>DataFrame) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Write DataFrame to BigQuery&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    gcp_credentials_block <span style="color:#f92672">=</span> GcpCredentials<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;dezoom-gcp-creds&#34;</span>)
+</span></span><span style="display:flex;"><span>    credential <span style="color:#f92672">=</span> gcp_credentials_block<span style="color:#f92672">.</span>get_credentials_from_service_account()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>to_gbq(
+</span></span><span style="display:flex;"><span>        destination_table<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dezoomcamp.rides&#34;</span>,
+</span></span><span style="display:flex;"><span>        project_id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data-engineering-demo-375721&#34;</span>,
+</span></span><span style="display:flex;"><span>        credentials<span style="color:#f92672">=</span>credential,
+</span></span><span style="display:flex;"><span>        chunksize<span style="color:#f92672">=</span><span style="color:#ae81ff">500_000</span>,
+</span></span><span style="display:flex;"><span>        if_exists<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;append&#34;</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><h2 id="prefect-flow-deployment">Prefect flow deployment</h2>
+<p>There are two methods to deploy the flow: CLI or python file.</p>
+<h3 id="method-1-deployment-using-cli">Method 1: deployment using cli</h3>
+<p>Step 1: build</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>prefect deployment build ./parameterized_flow.py:etl_parent_flow -n <span style="color:#e6db74">&#34;Parameterized ETL&#34;</span>
+</span></span></code></pre></div><p>prefect deployment build is the Prefect CLI command that enables you to prepare the settings for a deployment.</p>
+<ul>
+<li>./parameterized_flow.py:etl_parent_flow specifies the location of the flow script file and the name of the entrypoint flow function, separated by a colon.</li>
+<li>-n log-simple specifies a name for the deployment.</li>
+</ul>
+<p>What it did is to create a etl flow deployment parent yaml file.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328776/week-2-de-Prefect/flow-deployment-yaml_ute91w.png" alt="yaml file"></p>
+<p>step 2: apply</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>prefect deployment apply etl_parent_flow-deployment.yaml
+</span></span></code></pre></div><h3 id="method-2-deployment-with-python-file">Method 2: deployment with python file</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> prefect.infrastructure.docker <span style="color:#f92672">import</span> DockerContainer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> prefect.deployments <span style="color:#f92672">import</span> Deployment
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> parameterized_flow <span style="color:#f92672">import</span> etl_parent_flow
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker_container_block <span style="color:#f92672">=</span> DockerContainer<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;docker-zoom&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker_dep <span style="color:#f92672">=</span> Deployment<span style="color:#f92672">.</span>build_from_flow(
+</span></span><span style="display:flex;"><span>   flow<span style="color:#f92672">=</span>etl_parent_flow,
+</span></span><span style="display:flex;"><span>   name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;docker-flow&#34;</span>,
+</span></span><span style="display:flex;"><span>   infrastructure<span style="color:#f92672">=</span>docker_container_block
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>   docker_dep<span style="color:#f92672">.</span>apply()
+</span></span></code></pre></div><h3 id="create-notification">Create notification</h3>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328777/week-2-de-Prefect/create-notification_lij50s.png" alt="notification"></p>
+<h3 id="schedule-flow">Schedule flow</h3>
+<p>Use cron.</p>
+<pre tabindex="0"><code class="language-note" data-lang="note"># ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * &lt;command to execute&gt;
+</code></pre><p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1675328774/week-2-de-Prefect/schedule_bxvkl4.png" alt="schedule"></p>
+<h3 id="store-code-in-docker-image">Store code in docker image</h3>
+<ul>
+<li>Create docker file:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM prefecthq/prefect:2.7.7-python3.9
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY docker-requirements.txt .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN pip install -r docker-requirements.txt --trusted-host pypi.python.org --no-cache-dir
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY prefect /opt/prefect/flows
+</span></span><span style="display:flex;"><span>COPY data /opt/prefect/data
+</span></span></code></pre></div><ul>
+<li>
+<p>Build a docker image. Don’t forget the last .
+<code>docker image build -t xiahe/perfect:zoom .</code>
+Make sure you have tagged your image in this format:
+{{username}}/{{imagename}}:{{version}}</p>
+</li>
+<li>
+<p>Push docker file
+&lsquo;&lsquo;&lsquo;docker image push xiahe/prefect:zoom&rsquo;&rsquo;&rsquo;</p>
+</li>
+</ul>
+<p>Reference:</p>
+<ul>
+<li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp">Data Engineering Zoomcamp in Github</a></li>
+<li><a href="https://github.com/DataTalksClub/nyc-tlc-data">NYC TLC Data</a></li>
+</ul>
+<p>❤️ Please visit my <a href="https://xiahe-bleinagel.com/">home page</a> for more contents. I look forward to connecting with you via <a href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/">LinkedIn</a>.</p>
+<p>❤️ You might like <a href="https://xiahe-bleinagel.com/2023/01/from-a-stay-at-home-mom-to-a-data-scientist/">From A Stay-At-Home Mom To A Data Scientist</a>.</p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/prefect/">Prefect</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/docker/">Docker</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/google-cloud/">Google Cloud</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/">Data Engineering Zoomcamp</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/01/maximizing-efficiency-with-chatgpt-my-experience/" data-tooltip="Maximizing Efficiency with ChatGPT: My Experience" aria-label="PREVIOUS: Maximizing Efficiency with ChatGPT: My Experience">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiahe-bleinagel.com\/2023\/02\/week-2-data-engineering-zoomcamp-notes-prefect\/';
+        
+          this.page.identifier = '\/2023\/02\/week-2-data-engineering-zoomcamp-notes-prefect\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'data-think';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 Xia He-Bleinagel. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/01/maximizing-efficiency-with-chatgpt-my-experience/" data-tooltip="Maximizing Efficiency with ChatGPT: My Experience" aria-label="PREVIOUS: Maximizing Efficiency with ChatGPT: My Experience">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-2-data-engineering-zoomcamp-notes-prefect%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-2-data-engineering-zoomcamp-notes-prefect%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-2-data-engineering-zoomcamp-notes-prefect%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xia He-Bleinagel</h4>
+    
+      <div id="about-card-bio">Data Science Generalist |Data Engineer |Digital Analyst</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Consultant|AI and Data Science
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Berlin
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://res.cloudinary.com/do5aglxsw/image/upload/v1672755237/blog-img/sunset_k3zwjb.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiahe-bleinagel.com/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

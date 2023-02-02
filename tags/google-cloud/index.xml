@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google Cloud on Xia He-Bleinagel</title>
+    <link>https://xiahe-bleinagel.com/tags/google-cloud/</link>
+    <description>Recent content in Google Cloud on Xia He-Bleinagel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/tags/google-cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 2 Data Engineering Zoomcamp Notes: Prefect</title>
+      <link>https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/</link>
+      <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/</guid>
+      <description>In week 2 we learned Prefect to manage our data flow. I like Prefect very much because it allows to use python to define tasks and flows. Very interesting topic to learn!</description>
+    </item>
+    
+  </channel>
+</rss>
