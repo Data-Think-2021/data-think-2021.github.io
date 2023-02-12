@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery",
+  
+  "image": "//res.cloudinary.com/do5aglxsw/image/upload/v1676151436/week3_bigquery/data-warehouse-big_ybwb1f.jpg",
+  
+  "datePublished": "2023-02-11T00:00:00Z",
+  "dateModified": "2023-02-11T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Xia He-Bleinagel",
+    
+    "image": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/xiahe-bleinagel.com\/2023\/02\/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xia He-Bleinagel",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    }
+    
+  },
+  "description": "In week 3 we learned data warehouse and google Big Query. Some best practices like creating external table, partition and clustering tables are introduced. We can even do machine learning in Big Query.",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.108.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Xia He-Bleinagel">
+<meta name="keywords" content="">
+<meta name="description" content="In week 3 we learned data warehouse and google Big Query. Some best practices like creating external table, partition and clustering tables are introduced. We can even do machine learning in Big Query.">
+
+
+<meta property="og:description" content="In week 3 we learned data warehouse and google Big Query. Some best practices like creating external table, partition and clustering tables are introduced. We can even do machine learning in Big Query.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery">
+<meta name="twitter:title" content="Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery">
+<meta property="og:url" content="https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/">
+<meta property="twitter:url" content="https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/">
+<meta property="og:site_name" content="Xia He-Bleinagel">
+<meta property="og:description" content="In week 3 we learned data warehouse and google Big Query. Some best practices like creating external table, partition and clustering tables are introduced. We can even do machine learning in Big Query.">
+<meta name="twitter:description" content="In week 3 we learned data warehouse and google Big Query. Some best practices like creating external table, partition and clustering tables are introduced. We can even do machine learning in Big Query.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-02-11T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-02-11T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Data Engineering">
+    
+  
+  
+    
+      <meta property="article:tag" content="Google Cloud">
+    
+      <meta property="article:tag" content="Big Query">
+    
+      <meta property="article:tag" content="Data Engineering Zoomcamp">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+
+
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676151436/week3_bigquery/data-warehouse-big_ybwb1f.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676151436/week3_bigquery/data-warehouse-big_ybwb1f.jpg">
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676151436/week3_bigquery/data-warehouse-small_qrxxcj.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676151436/week3_bigquery/data-warehouse-small_qrxxcj.jpg">
+
+
+    <title>Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery</title>
+
+    <link rel="icon" href="https://xiahe-bleinagel.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiahe-bleinagel.com/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVKGJSSLNL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-PVKGJSSLNL', { 'anonymize_ip': false });
+}
+</script>
+
+     
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiahe-bleinagel.com/" aria-label="Go to homepage">Xia He-Bleinagel</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiahe-bleinagel.com/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiahe-bleinagel.com/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xia He-Bleinagel</h4>
+        
+          <h5 class="sidebar-profile-bio">Data Science Generalist |Data Engineer |Digital Analyst</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/projects" title="Projects">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Data-Think-2021" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/contact" title="Contact">
+    
+      <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Contact</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//res.cloudinary.com/do5aglxsw/image/upload/v1676151436/week3_bigquery/data-warehouse-big_ybwb1f.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-02-11T00:00:00Z">
+        
+  February 11, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/data-engineering">Data Engineering</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <div>
+<h1 id="table-of-contents"></h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-data-warehouse">What is Data Warehouse</a>
+      <ul>
+        <li><a href="#oltp-vs-olap">OLTP vs OLAP</a></li>
+      </ul>
+    </li>
+    <li><a href="#introduction-of-bigquery">Introduction of BigQuery</a>
+      <ul>
+        <li><a href="#bigquery-pricing">BigQuery Pricing</a></li>
+        <li><a href="#create-external-tables-using-query">Create external tables using query</a></li>
+        <li><a href="#partitioning-and-clustering">Partitioning and Clustering</a></li>
+      </ul>
+    </li>
+    <li><a href="#bigquery-best-practice">BigQuery best practice</a></li>
+    <li><a href="#machine-learning-in-bigquery">Machine Learning in BigQuery</a></li>
+  </ul>
+</nav>
+</div>
+
+<h2 id="what-is-data-warehouse">What is Data Warehouse</h2>
+<p>A data warehouse is a type of data management system that is designed to enable and support business intelligence activities. It aggregates data from different sources into a single, central data store. It is Online Analytical Processing(OLAP) system. Data is structured in form of dimensional model.<br>
+The most popular architecture is three-tier data warehouse architecture, which includes bottom tier, middle tier and top tier.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676231808/week3_bigquery/dw_archi_d2fqov.png" alt="three tier model"></p>
+<h3 id="oltp-vs-olap">OLTP vs OLAP</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">OLTP(online transaction processing)</th>
+<th style="text-align:right">OLAP(online analytical processing)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Storage type</td>
+<td style="text-align:center">Row store</td>
+<td style="text-align:right">Column Store</td>
+</tr>
+<tr>
+<td style="text-align:left">Function</td>
+<td style="text-align:center">Operational</td>
+<td style="text-align:right">BI, Decision making, Analysis</td>
+</tr>
+<tr>
+<td style="text-align:left">Data source</td>
+<td style="text-align:center">Current data, Operational Data, Day to Day</td>
+<td style="text-align:right">OLTP, third-party systems, IOT</td>
+</tr>
+<tr>
+<td style="text-align:left">Query Types</td>
+<td style="text-align:center">Simple, Multiple joins, return few records</td>
+<td style="text-align:right">Complex, less joins, return large records</td>
+</tr>
+<tr>
+<td style="text-align:left">Speed</td>
+<td style="text-align:center">Very fast transaction type</td>
+<td style="text-align:right">slow to medium depends on complexity of query</td>
+</tr>
+<tr>
+<td style="text-align:left">Database Design</td>
+<td style="text-align:center">Normalized (Many tables), relational</td>
+<td style="text-align:right">De-normalized (few tables), star/snowflake schema</td>
+</tr>
+<tr>
+<td style="text-align:left">Users</td>
+<td style="text-align:center">Operational users</td>
+<td style="text-align:right">Analysts/data scientist/data engineers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="introduction-of-bigquery">Introduction of BigQuery</h2>
+<p>When a company starts its journey of data warehouse or data analytics, a huge chunk of time is spent in creating a data warehouse, maintaining it, using bigquery can get rid of the pain. BigQuery is</p>
+<ul>
+<li>Serverless data warehouse</li>
+<li>Software as well as infrastructure including <strong>scalability</strong> and <strong>high-availability</strong></li>
+<li>Built-in features like
+<ul>
+<li>Machine learning</li>
+<li>Geospatial analysis</li>
+<li>Business intelligence</li>
+</ul>
+</li>
+<li>BigQuery maximizes flexibility by <strong>separating the compute engine that analyzes your data from your storage</strong></li>
+</ul>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676231808/week3_bigquery/bq_m3s02m.png" alt="bq intro"></p>
+<p>Bigquery generally caches data, you can disable it in query settings -&gt;cache preference.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676231808/week3_bigquery/query_setting_bzjsjo.png" alt="sreenshot bq"></p>
+<p>Bigquery provides a lot of public data. We can search it and explore the data.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676232193/week3_bigquery/public_data_dmjups.png" alt="public data"></p>
+<h3 id="bigquery-pricing">BigQuery Pricing</h3>
+<ul>
+<li>On demand pricing
+E.G. $5 per TB. The first 1TB per month is free.</li>
+<li>Flat rate pricing
+Based on number of pre requested slots.
+Monthly cost $2000, 100 number of slots</li>
+</ul>
+<h3 id="create-external-tables-using-query">Create external tables using query</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#75715e">-- Create external table referring to gcs path
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">EXTERNAL</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">data</span><span style="color:#f92672">-</span>engineering<span style="color:#f92672">-</span>demo<span style="color:#f92672">-</span><span style="color:#ae81ff">375721</span>.dezoomcamp.external_fvh_rides<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">OPTIONS</span> (
+</span></span><span style="display:flex;"><span> format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;CSV&#39;</span>,
+</span></span><span style="display:flex;"><span> uris <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;gs://dtc_data_lake_data-engineering-demo-375721/data-engineering-demo/data/fhv/fhv_tripdata_2019-*.csv.gz&#39;</span>]
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>It takes only a few seconds to create the  external table.
+External table size 0B, long-term storage size 0B,
+But it can’t detect the rows or the table size.
+Because the table is not in bigquery. It is in an external system such as google cloud storage.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676231808/week3_bigquery/external_table_uj6wdd.png" alt="external table"></p>
+<h3 id="partitioning-and-clustering">Partitioning and Clustering</h3>
+<p>Partition is a huge advantage so that Big Query doesn’t need to run over the whole table. For example, when most of the queries are based on date und use it as a filter.  You can partition a table based on Integer column, or time-unit column, or ingestion time.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676231808/week3_bigquery/partition_table_gw7tdf.png" alt="partition table"></p>
+<p>Clustering tables means sort by clustered columns. In this way it can also improve query performance and reduce query costs.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676231808/week3_bigquery/clustering_yq8vv4.png" alt="clustering table"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#75715e">-- Create a partitioned table from external table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">data</span><span style="color:#f92672">-</span>engineering<span style="color:#f92672">-</span>demo<span style="color:#f92672">-</span><span style="color:#ae81ff">375721</span>.dezoomcamp.fvh_rides_partitioned<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>PARTITION <span style="color:#66d9ef">BY</span>
+</span></span><span style="display:flex;"><span> DATE(pickup_datetime) <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">data</span><span style="color:#f92672">-</span>engineering<span style="color:#f92672">-</span>demo<span style="color:#f92672">-</span><span style="color:#ae81ff">375721</span>.dezoomcamp.external_fvh_rides<span style="color:#f92672">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Creating a partition and cluster table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">data</span><span style="color:#f92672">-</span>engineering<span style="color:#f92672">-</span>demo<span style="color:#f92672">-</span><span style="color:#ae81ff">375721</span>.dezoomcamp.fvh_rides_partitoned_clustered<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>PARTITION <span style="color:#66d9ef">BY</span> DATE(pickup_datetime)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CLUSTER</span> <span style="color:#66d9ef">BY</span> affiliated_base_number <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">data</span><span style="color:#f92672">-</span>engineering<span style="color:#f92672">-</span>demo<span style="color:#f92672">-</span><span style="color:#ae81ff">375721</span>.dezoomcamp.external_fvh_rides<span style="color:#f92672">`</span>;
+</span></span></code></pre></div><h2 id="bigquery-best-practice">BigQuery best practice</h2>
+<span class="highlight-text yellow">Cost reduction</span>
+<ul>
+<li>Avoid SELECT *</li>
+<li>Price your queries before running them</li>
+<li>Use clustered or partitioned tables</li>
+<li>Use streaming inserts with caution</li>
+<li>Materialize query results in stages</li>
+</ul>
+<span class="highlight-text yellow">Query performance</span>
+<ul>
+<li>Filter on partitioned columns</li>
+<li>Denormalizing data</li>
+<li>Use nested or repeated columns</li>
+<li>Use external data sources appropriately</li>
+<li>Don&rsquo;t use it, in case u want a high query performance</li>
+<li>Reduce data before using a JOIN</li>
+<li>Do not treat WITH clauses as prepared statements</li>
+<li>Avoid oversharding tables</li>
+<li>Avoid JavaScript user-defined functions</li>
+<li>Use approximate aggregation functions (HyperLogLog++)</li>
+<li>Order Last, for query operations to maximize performance</li>
+<li>Optimize your join patterns
+<ul>
+<li>As a best practice, place the table with the largest number of rows first, followed by the table with the fewest rows, and then place the remaining tables by decreasing size.</li>
+</ul>
+</li>
+</ul>
+<h2 id="machine-learning-in-bigquery">Machine Learning in BigQuery</h2>
+<p>Data Analysts and managers can use BigQuery to build ML models and it requires no knowledge of python or Java. It&rsquo;s not necessary to export data into a different system.</p>
+<p>ML in BigQuery is free for the 10GB per month of data storage and the 1TB per month of queries processed.</p>
+<p>Steps to build a ML steps:</p>
+<ol>
+<li>Select relevant columns (features)</li>
+<li>Create a regression or classification model you selected</li>
+<li>Evaluate the model</li>
+<li>Predict the results with the model</li>
+<li>If necessary, fine tuning the hyperparameters.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#75715e">-- CREATE A ML TABLE WITH APPROPRIATE TYPE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_ml<span style="color:#f92672">`</span> (
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>passenger_count<span style="color:#f92672">`</span> INTEGER,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>trip_distance<span style="color:#f92672">`</span> FLOAT64,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>PULocationID<span style="color:#f92672">`</span> STRING,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>DOLocationID<span style="color:#f92672">`</span> STRING,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>payment_type<span style="color:#f92672">`</span> STRING,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>fare_amount<span style="color:#f92672">`</span> FLOAT64,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>tolls_amount<span style="color:#f92672">`</span> FLOAT64,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>tip_amount<span style="color:#f92672">`</span> FLOAT64
+</span></span><span style="display:flex;"><span>) <span style="color:#66d9ef">AS</span> (
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> passenger_count, trip_distance, <span style="color:#66d9ef">cast</span>(PULocationID <span style="color:#66d9ef">AS</span> STRING), <span style="color:#66d9ef">CAST</span>(DOLocationID <span style="color:#66d9ef">AS</span> STRING),
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CAST</span>(payment_type <span style="color:#66d9ef">AS</span> STRING), fare_amount, tolls_amount, tip_amount
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_partitoned<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> fare_amount <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- CREATE MODEL WITH DEFAULT SETTING
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> MODEL <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.tip_model<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">OPTIONS</span>
+</span></span><span style="display:flex;"><span>(model_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear_reg&#39;</span>,
+</span></span><span style="display:flex;"><span>input_label_cols<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;tip_amount&#39;</span>],
+</span></span><span style="display:flex;"><span>DATA_SPLIT_METHOD<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;AUTO_SPLIT&#39;</span>) <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_ml<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span>tip_amount <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- CHECK FEATURES
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> ML.FEATURE_INFO(MODEL <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.tip_model<span style="color:#f92672">`</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- EVALUATE THE MODEL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>ML.EVALUATE(MODEL <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.tip_model<span style="color:#f92672">`</span>,
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_ml<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span>tip_amount <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- PREDICT THE MODEL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>ML.PREDICT(MODEL <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.tip_model<span style="color:#f92672">`</span>,
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_ml<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span>tip_amount <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- PREDICT AND EXPLAIN
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>ML.EXPLAIN_PREDICT(MODEL <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.tip_model<span style="color:#f92672">`</span>,
+</span></span><span style="display:flex;"><span>(
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_ml<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span>tip_amount <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>), STRUCT(<span style="color:#ae81ff">3</span> <span style="color:#66d9ef">as</span> top_k_features));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- HYPER PARAM TUNNING
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> MODEL <span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.tip_hyperparam_model<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">OPTIONS</span>
+</span></span><span style="display:flex;"><span>(model_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear_reg&#39;</span>,
+</span></span><span style="display:flex;"><span>input_label_cols<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;tip_amount&#39;</span>],
+</span></span><span style="display:flex;"><span>DATA_SPLIT_METHOD<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;AUTO_SPLIT&#39;</span>,
+</span></span><span style="display:flex;"><span>num_trials<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>max_parallel_trials<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>l1_reg<span style="color:#f92672">=</span>hparam_range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>l2_reg<span style="color:#f92672">=</span>hparam_candidates([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>])) <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">`</span>taxi<span style="color:#f92672">-</span>rides<span style="color:#f92672">-</span>ny.nytaxi.yellow_tripdata_ml<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span>
+</span></span><span style="display:flex;"><span>tip_amount <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+</span></span></code></pre></div><p>Reference:</p>
+<ul>
+<li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp">Data Engineering Zoomcamp in Github</a></li>
+<li><a href="https://github.com/DataTalksClub/nyc-tlc-data">NYC TLC Data</a></li>
+<li><a href="https://cloud.google.com/bigquery-ml/docs/introduction">BigQuery ML</a></li>
+</ul>
+<p>❤️ Please visit my <a href="https://xiahe-bleinagel.com/">home page</a> for more contents. I look forward to connecting with you via <a href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/">LinkedIn</a>.</p>
+<p>❤️ You might like <a href="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/">Week 2 data engineering zoomcamp notes: Prefect</a>.</p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/google-cloud/">Google Cloud</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/big-query/">Big Query</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/">Data Engineering Zoomcamp</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/" data-tooltip="Week 2 Data Engineering Zoomcamp Notes: Prefect" aria-label="PREVIOUS: Week 2 Data Engineering Zoomcamp Notes: Prefect">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiahe-bleinagel.com\/2023\/02\/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery\/';
+        
+          this.page.identifier = '\/2023\/02\/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'data-think';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 Xia He-Bleinagel. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/" data-tooltip="Week 2 Data Engineering Zoomcamp Notes: Prefect" aria-label="PREVIOUS: Week 2 Data Engineering Zoomcamp Notes: Prefect">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xia He-Bleinagel</h4>
+    
+      <div id="about-card-bio">Data Science Generalist |Data Engineer |Digital Analyst</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Consultant|AI and Data Science
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Berlin
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://res.cloudinary.com/do5aglxsw/image/upload/v1672755237/blog-img/sunset_k3zwjb.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiahe-bleinagel.com/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

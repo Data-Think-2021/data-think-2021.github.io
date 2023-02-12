@@ -6,7 +6,16 @@
     <description>Recent content in Data Engineering on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/categories/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/categories/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery</title>
+      <link>https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/</link>
+      <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/</guid>
+      <description>In week 3 we learned data warehouse and google Big Query. Some best practices like creating external table, partition and clustering tables are introduced. We can even do machine learning in Big Query.</description>
+    </item>
+    
     <item>
       <title>Week 2 Data Engineering Zoomcamp Notes: Prefect</title>
       <link>https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/</link>
