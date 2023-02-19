@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt",
+  
+  "image": "//res.cloudinary.com/do5aglxsw/image/upload/v1676844855/week4_dbt/cloud-network_lwkowi.jpg",
+  
+  "datePublished": "2023-02-18T00:00:00Z",
+  "dateModified": "2023-02-18T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Xia He-Bleinagel",
+    
+    "image": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/xiahe-bleinagel.com\/2023\/02\/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xia He-Bleinagel",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b"
+    }
+    
+  },
+  "description": "I had completed the analytics engineering bootcamp in Udemy. So data modelling and dbt are not new to me. In week 4, some interesting take-aways for me are the usage of dbt cloud and the software engineering best practices like modularity, portability, CI/CD, and documentation. Great course as usual from dezoomcamp!",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.108.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="Xia He-Bleinagel">
+<meta name="keywords" content="">
+<meta name="description" content="I had completed the analytics engineering bootcamp in Udemy. So data modelling and dbt are not new to me. In week 4, some interesting take-aways for me are the usage of dbt cloud and the software engineering best practices like modularity, portability, CI/CD, and documentation. Great course as usual from dezoomcamp!">
+
+
+<meta property="og:description" content="I had completed the analytics engineering bootcamp in Udemy. So data modelling and dbt are not new to me. In week 4, some interesting take-aways for me are the usage of dbt cloud and the software engineering best practices like modularity, portability, CI/CD, and documentation. Great course as usual from dezoomcamp!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt">
+<meta name="twitter:title" content="Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt">
+<meta property="og:url" content="https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/">
+<meta property="twitter:url" content="https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/">
+<meta property="og:site_name" content="Xia He-Bleinagel">
+<meta property="og:description" content="I had completed the analytics engineering bootcamp in Udemy. So data modelling and dbt are not new to me. In week 4, some interesting take-aways for me are the usage of dbt cloud and the software engineering best practices like modularity, portability, CI/CD, and documentation. Great course as usual from dezoomcamp!">
+<meta name="twitter:description" content="I had completed the analytics engineering bootcamp in Udemy. So data modelling and dbt are not new to me. In week 4, some interesting take-aways for me are the usage of dbt cloud and the software engineering best practices like modularity, portability, CI/CD, and documentation. Great course as usual from dezoomcamp!">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2023-02-18T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2023-02-18T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Data Engineering">
+    
+      <meta property="article:section" content="Analytics Engineering">
+    
+  
+  
+    
+      <meta property="article:tag" content="Google Cloud">
+    
+      <meta property="article:tag" content="dbt">
+    
+      <meta property="article:tag" content="Big Query">
+    
+      <meta property="article:tag" content="Data Engineering Zoomcamp">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=640">
+
+
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676844855/week4_dbt/cloud-network_lwkowi.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676844855/week4_dbt/cloud-network_lwkowi.jpg">
+
+
+  <meta property="og:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676844855/week4_dbt/cloud-network_lwkowi.jpg">
+  <meta property="twitter:image" content="//res.cloudinary.com/do5aglxsw/image/upload/v1676844855/week4_dbt/cloud-network_lwkowi.jpg">
+
+
+    <title>Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt</title>
+
+    <link rel="icon" href="https://xiahe-bleinagel.com/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiahe-bleinagel.com/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVKGJSSLNL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-PVKGJSSLNL', { 'anonymize_ip': false });
+}
+</script>
+
+     
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiahe-bleinagel.com/" aria-label="Go to homepage">Xia He-Bleinagel</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiahe-bleinagel.com/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=90" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiahe-bleinagel.com/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Xia He-Bleinagel</h4>
+        
+          <h5 class="sidebar-profile-bio">Data Science Generalist |Data Engineer |Digital Analyst</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/projects" title="Projects">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-code" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Data-Think-2021" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/" target="_blank" rel="noopener" title="LinkedIn">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-linkedin" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/contact" title="Contact">
+    
+      <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Contact</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/index.xml" title="RSS">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('//res.cloudinary.com/do5aglxsw/image/upload/v1676844855/week4_dbt/cloud-network_lwkowi.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-02-18T00:00:00Z">
+        
+  February 18, 2023
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/data-engineering">Data Engineering</a>, 
+    
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/analytics-engineering">Analytics Engineering</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <div>
+<h1 id="table-of-contents"></h1>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#analytics-engineering-basics">Analytics Engineering Basics</a>
+      <ul>
+        <li><a href="#data-modelling-concepts">Data Modelling Concepts</a></li>
+        <li><a href="#etl-vs-elt">ETL vs ELT</a></li>
+        <li><a href="#data-warehouse-design-methodologies">Data warehouse design methodologies</a></li>
+        <li><a href="#kimballs-dimensional-modelling">Kimball&rsquo;s Dimensional Modelling</a>
+          <ul>
+            <li><a href="#fact-tables-vs-dimension-tables">Fact tables vs dimension tables</a></li>
+            <li><a href="#example-star-schema">Example star schema</a></li>
+            <li><a href="#kimball-architecture">Kimball architecture</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#introduction-of-dbt">Introduction of dbt</a>
+      <ul>
+        <li><a href="#dbt-cloud-vs-dtb-core">dbt cloud vs dtb core</a></li>
+        <li><a href="#start-a-new-dbt-project-in-dbt-cloud">Start a new dbt project in dbt cloud</a>
+          <ul>
+            <li><a href="#jinja-and-macros">Jinja and macros</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#variables">Variables</a></li>
+          </ul>
+        </li>
+        <li><a href="#tests-and-documentation-of-dbt-models">Tests and Documentation of dbt models</a>
+          <ul>
+            <li><a href="#tests">Tests</a></li>
+            <li><a href="#documentation">Documentation</a></li>
+          </ul>
+        </li>
+        <li><a href="#deployment">Deployment</a></li>
+      </ul>
+    </li>
+    <li><a href="#visualization-with-google-studio">Visualization with Google studio</a></li>
+  </ul>
+</nav>
+</div>
+
+<h2 id="analytics-engineering-basics">Analytics Engineering Basics</h2>
+<p>Analytics Engineers are between Data Engineers and Data analysts. He/she introduces the good software engineering practices to the efforts of data analysts and data scientists.</p>
+<p>Some key skills of analytics engineers are:</p>
+<ul>
+<li>SQL mastery, data transformation, data warehouse, data modelling</li>
+<li>Data Orchestration, business intellignce tools, version control, communication</li>
+<li>Programming, CI/CD, data engineering principles, security &amp; governance</li>
+</ul>
+<p>Tools for analytics engineers:</p>
+<ul>
+<li>Data loading</li>
+<li>Data storing -&gt; cloud data warehouses like snowflake, bigquery, redshift</li>
+<li>Data modelling -&gt; dbt or dataform</li>
+<li>Data presentation -&gt; data studio, looker, tableau</li>
+</ul>
+<h3 id="data-modelling-concepts">Data Modelling Concepts</h3>
+<p>A data model</p>
+<ul>
+<li>Foundation to build DWH (Data warehouse)&amp; BI solutions</li>
+<li>Primary goal of  the data model is to act as a blueprint</li>
+<li>Helps build conceptual, logical, physical models and define relationships</li>
+</ul>
+<h3 id="etl-vs-elt">ETL vs ELT</h3>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/etl_elt_pshh8h.png" alt="etl vs elt"></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ETL</th>
+<th>ELT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume</td>
+<td>Small / medium data volume</td>
+<td>Large data volumne</td>
+</tr>
+<tr>
+<td>Analysis time</td>
+<td>Fast analysis</td>
+<td>Slower than ETL</td>
+</tr>
+<tr>
+<td>Data Type</td>
+<td>Prefer structured data</td>
+<td>Structured &amp; unstructured data</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>High-cost</td>
+<td>Low-cost</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>High maintenance due to on-premise solutions</td>
+<td>Low-Maintance due to cloud solutions</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>Only required for reporting/analysis</td>
+<td>Everything can be accessed from data lake</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-warehouse-design-methodologies">Data warehouse design methodologies</h3>
+<ul>
+<li>Inmon</li>
+<li>Kimball</li>
+<li>Data Vault</li>
+<li>OBT</li>
+</ul>
+<h3 id="kimballs-dimensional-modelling">Kimball&rsquo;s Dimensional Modelling</h3>
+<p>Kimball methodology is created by Ralph Kimball. It starts with identifying key business process and requirements (<strong>Bottom-up</strong>). <strong>It prioritize user understandability and query performance over non redundant data (3NF).</strong> The dimensional model is star-schema design (denormalised). The model design is built on <strong>fact and dimension tables.</strong></p>
+<h4 id="fact-tables-vs-dimension-tables">Fact tables vs dimension tables</h4>
+<table>
+<thead>
+<tr>
+<th>Fact tables</th>
+<th>Dimension tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measurements, metrics or facts</td>
+<td>Provides context to a business process</td>
+</tr>
+<tr>
+<td>Corresponds to a business process</td>
+<td>Corresponds to a business entity</td>
+</tr>
+<tr>
+<td>&ldquo;Verbs&rdquo;</td>
+<td>&ldquo;Nons&rdquo;</td>
+</tr>
+<tr>
+<td>fact table is surrounded by dimension tables</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-star-schema">Example star schema</h4>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835235/week4_dbt/star_schema_example_srtbls.png" alt="star schema"></p>
+<h4 id="kimball-architecture">Kimball architecture</h4>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/kimball-architecture_knkztw.png" alt="The architecture"></p>
+<ul>
+<li>Staging area: contain raw data and not meant to be exposed to everyone</li>
+<li>Processing area: do data modelling</li>
+<li>Presentation area: final presentation of the data, exposure to business.</li>
+</ul>
+<h2 id="introduction-of-dbt">Introduction of dbt</h2>
+<p><strong>dbt</strong> stands for data built tool.
+dbt is a transformation tool that allows anyone that knows SQL to deploy analytics code following software engineering best practices like modularity, portability, CI/CD, and documentation.
+<img src="http://www.getdbt.com/ui/img/png/analytics-engineering-dbt.png" alt="dbt"></p>
+<h3 id="dbt-cloud-vs-dtb-core">dbt cloud vs dtb core</h3>
+<table>
+<thead>
+<tr>
+<th>dbt Cloud</th>
+<th>dbt Core</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web-based IDE to develop, run and test a dbt project</td>
+<td>Builds and runs a dbt project (.sql and .yml files)</td>
+</tr>
+<tr>
+<td>Jobs orchestration</td>
+<td>Includes SQL compilation logic, macros and database adapters</td>
+</tr>
+<tr>
+<td>Logging and Alerting</td>
+<td>Load Google analytics asynchronously</td>
+</tr>
+<tr>
+<td>Integrated documentation</td>
+<td>Includes a CLI interface to run dbt commands locally</td>
+</tr>
+<tr>
+<td>Free for individuals (one developer seat)</td>
+<td>Opens source and free to use</td>
+</tr>
+</tbody>
+</table>
+<h3 id="start-a-new-dbt-project-in-dbt-cloud">Start a new dbt project in dbt cloud</h3>
+<p>When you signed in, the first step is to create a project following the steps:</p>
+<ol>
+<li>
+<p>Give a name to your project, choose a warehouse, a development environment is automatically created.<br>
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/create-project_ws5hi4.png" alt="start"></p>
+</li>
+<li>
+<p>For BigQuery connection, we will upload the service account key in json.<br>
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835235/week4_dbt/service-json-file_pvwhe1.png" alt="service key"></p>
+</li>
+<li>
+<p>Set the data location to the same location where the dataset in BigQuery is located.<br>
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/data-location-dbt-project_j0ihpi.png" alt="data location"></p>
+</li>
+<li>
+<p>Test the connection
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835235/week4_dbt/test-connection_ymf3j0.png" alt="test connection"></p>
+</li>
+<li>
+<p>Link dbt project to a GitHub repository</p>
+</li>
+</ol>
+<ul>
+<li>Create a GitHub repository to deploy the project.</li>
+<li>Go to &ldquo;Profile&rdquo; -&gt; Linked accounts -&gt; Choose Github -&gt; Select the repository</li>
+</ul>
+<p>After all these steps, your project is ready.</p>
+<ol start="6">
+<li>In development, initialise the project and run <code>dbt run</code> to run your first model in the example model dbt provides.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/dbt-initial_i6tbbk.png" alt="initialise"></li>
+</ol>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/dbt-run_sxgo0j.png" alt="dbt run"></p>
+<h4 id="jinja-and-macros">Jinja and macros</h4>
+<p>In dbt, you can combine SQL with <a href="https://jinja.palletsprojects.com/en/3.1.x/templates/">Jinja</a>, a templating language. You have much more flexibility when writing your sql codes. You can use if or for loops, or use variables.</p>
+<p>Macros in Jinja are similar to functions and can be reused across different models. They can return codes and are very similar to python chain.
+You can create a sql file under the macros folder.
+For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">{</span><span style="color:#f92672">#</span>
+</span></span><span style="display:flex;"><span>    This macro <span style="color:#66d9ef">returns</span> the description <span style="color:#66d9ef">of</span> the payment_type 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#f92672">%</span> macro get_payment_type_description(payment_type) <span style="color:#f92672">-%</span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#960050;background-color:#1e0010">{{</span> payment_type <span style="color:#960050;background-color:#1e0010">}}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;Credit card&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;Cash&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">3</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;No charge&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">4</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;Dispute&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">5</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;Unknown&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">when</span> <span style="color:#ae81ff">6</span> <span style="color:#66d9ef">then</span> <span style="color:#e6db74">&#39;Voided trip&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#f92672">%-</span> endmacro <span style="color:#f92672">%</span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>Then we can call the macro in our dbt models.</p>
+<h4 id="packages">Packages</h4>
+<p>Like libraries in other programming languages, we can use packages in <a href="https://hub.getdbt.com/dbt-labs/dbt_utils/latest/">dbt_utils</a> instead of writing everything in macros ourselves.</p>
+<p>Imported in the packages.yml file and imported by running <code>dbt deps</code>.<br>
+An example of packages.yml file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">packages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">package</span>: <span style="color:#ae81ff">dbt-labs/dbt_utils</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">version</span>: <span style="color:#ae81ff">0.8.0</span>
+</span></span></code></pre></div><p>It creates a dtb_packages folder.</p>
+<h4 id="variables">Variables</h4>
+<p>Variables are useful for defining values that be used across the project. You can define variable either in the dbt_project.yml file or on the command line.</p>
+<p>Define variables in dbt_project.yml file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">vars</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">payment_type_values</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+</span></span></code></pre></div><p>Calling the variable using</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">{</span><span style="color:#f92672">%</span> var(<span style="color:#e6db74">&#39;is_test_run&#39;</span>, <span style="color:#66d9ef">default</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>) <span style="color:#f92672">%</span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>In command line call the variable</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dbt run --select stg_green_tripdata --var ‘is_test_run:false’
+</span></span></code></pre></div><h3 id="tests-and-documentation-of-dbt-models">Tests and Documentation of dbt models</h3>
+<h4 id="tests">Tests</h4>
+<p>Tests are defined on a column in the .yml file. Dbt provides basic tests to check if the column values are unique, not null, accepted value, a foreign key to another.</p>
+<p><img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/dbt-test_nygudg.png" alt="test"></p>
+<h4 id="documentation">Documentation</h4>
+<p>Generate documentation for dbt project and render it as a website
+Information about your project and your data warehouse.
+Dbt docs can be hosted in dbt cloud.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/dbt-documentation_m8fuft.png" alt="documentation"></p>
+<h3 id="deployment">Deployment</h3>
+<p>Deployment means to run dbt models in production, to set up a system to run a scheduled dbt job automatically.</p>
+<p>Step 1: Create a production environment.
+Choose deployment type.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835235/week4_dbt/env-production_fc58ap.png" alt="production env"></p>
+<p>Step 2: Create a job.
+You can set up the triggers with Cron or with Schedule. Add the commands to run in the job <code>dbt build</code>.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835236/week4_dbt/create_job_lcmv9b.png" alt="Job"></p>
+<p>Step 3: View the job detailed history.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835235/week4_dbt/run-history_h1s0oy.png" alt="job history"></p>
+<h2 id="visualization-with-google-studio">Visualization with Google studio</h2>
+<p>Google data studio is an easy free tool to visualize your data. The first step is to import data from our BigQuery tables to Data studio. I will not cover how to build a dashboard here.
+<img src="https://res.cloudinary.com/do5aglxsw/image/upload/v1676835235/week4_dbt/studio-data-source_f3jo4o.png" alt="import data"></p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp">Data Engineering Zoomcamp in Github</a></li>
+<li><a href="https://docs.getdbt.com/docs/introduction">dbt official documentation</a></li>
+<li><a href="https://www.udemy.com/course/analytics-engineering-bootcamp/">Analytics Engineering Bootcamp in Udemy </a></li>
+<li><a href="https://pixabay.com/de/illustrations/netzwerk-cloud-computing-daten-4851119/">Cover picture from Pete Linforth on Pixabay</a></li>
+<li><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/">Jinja template</a></li>
+</ul>
+<p>❤️ Please visit my <a href="https://xiahe-bleinagel.com/">home page</a> for more contents. I look forward to connecting with you via <a href="https://www.linkedin.com/in/xia-he-bleinagel-51773585/">LinkedIn</a>.</p>
+<p>❤️ You might like</p>
+<ul>
+<li><a href="https://xiahe-bleinagel.com/2023/02/week-2-data-engineering-zoomcamp-notes-prefect/">Week 2 Data Engineering Zoomcamp Notes: Prefect</a></li>
+<li><a href="https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/">Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery</a></li>
+<li><a href="https://xiahe-bleinagel.com/2022/12/create-a-personal-website-with-hugo/">Create your personal website with Hugo</a></li>
+</ul>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/google-cloud/">Google Cloud</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/dbt/">dbt</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/big-query/">Big Query</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/">Data Engineering Zoomcamp</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/" data-tooltip="Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery" aria-label="PREVIOUS: Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiahe-bleinagel.com\/2023\/02\/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt\/';
+        
+          this.page.identifier = '\/2023\/02\/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'data-think';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2023 Xia He-Bleinagel. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav style="visibility: hidden">
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/" data-tooltip="Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery" aria-label="PREVIOUS: Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fxiahe-bleinagel.com%2F2023%2F02%2Fweek-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt%2F" aria-label="Share on Linkedin">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>Share on Linkedin</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/ea445659b1d6b09fcb9aadfd42dab93b?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Xia He-Bleinagel</h4>
+    
+      <div id="about-card-bio">Data Science Generalist |Data Engineer |Digital Analyst</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Consultant|AI and Data Science
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Berlin
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://res.cloudinary.com/do5aglxsw/image/upload/v1672755237/blog-img/sunset_k3zwjb.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiahe-bleinagel.com/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

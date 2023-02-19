@@ -6,7 +6,16 @@
     <description>Recent content on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt</title>
+      <link>https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/</link>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/</guid>
+      <description>I had completed the analytics engineering bootcamp in Udemy. So data modelling and dbt are not new to me. In week 4, some interesting take-aways for me are the usage of dbt cloud and the software engineering best practices like modularity, portability, CI/CD, and documentation. Great course as usual from dezoomcamp!</description>
+    </item>
+    
     <item>
       <title>Week 3 Data Engineering Zoomcamp Notes: Data Warehouse and BigQuery</title>
       <link>https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/</link>

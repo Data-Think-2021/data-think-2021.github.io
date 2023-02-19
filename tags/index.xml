@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Big Query</title>
       <link>https://xiahe-bleinagel.com/tags/big-query/</link>
-      <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://xiahe-bleinagel.com/tags/big-query/</guid>
       <description></description>
@@ -19,16 +19,25 @@
     <item>
       <title>Data Engineering Zoomcamp</title>
       <link>https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/</link>
-      <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://xiahe-bleinagel.com/tags/data-engineering-zoomcamp/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>dbt</title>
+      <link>https://xiahe-bleinagel.com/tags/dbt/</link>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/dbt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Google Cloud</title>
       <link>https://xiahe-bleinagel.com/tags/google-cloud/</link>
-      <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://xiahe-bleinagel.com/tags/google-cloud/</guid>
       <description></description>
