@@ -6,7 +6,16 @@
     <description>Recent content on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Take A Break and Continue</title>
+      <link>https://xiahe-bleinagel.com/2023/03/take-a-break-and-continue/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/2023/03/take-a-break-and-continue/</guid>
+      <description>I took a break to reflect and recharge. ChatGPT is a powerful tool. But it can&amp;rsquo;t solve every problem. The panic I experienced was genuine, but taking a break allows me to move forward with renewed energy.</description>
+    </item>
+    
     <item>
       <title>Week 4 Data Engineering Zoomcamp Notes: Analytics Engineering and dbt</title>
       <link>https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/</link>
@@ -103,7 +112,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://xiahe-bleinagel.com/about/</guid>
-      <description>Hi there, I&amp;rsquo;m Xia. I am a member of the AI &amp;amp; Data Analytics team focused on cloud application, data management, automation solution and AI. I see myself as a data generalist. I could gain knowledge and experience in many following areas:
+      <description>Hi there, I&amp;rsquo;m Xia. As a member of the AI &amp;amp; Data Analytics team, my focus is on cloud applications, data management, automation solutions and AI. I consider myself to be a data generalist with knowledge and experience in various areas including:
 Cloud, AWS, Google cloud Data engineering (Database), Analytics engineering (Data warehouse) Machine learning/ statistics modelling Natural language processing, AI Dashboard / BI Data collection or data tracking with Google Analytics Contact me</description>
     </item>
     
@@ -114,6 +123,19 @@ Cloud, AWS, Google cloud Data engineering (Database), Analytics engineering (Dat
       
       <guid>https://xiahe-bleinagel.com/contact/</guid>
       <description>You can get in touch with me via email and consult my professional profile on LinkedIn.</description>
+    </item>
+    
+    <item>
+      <title>Privacy</title>
+      <link>https://xiahe-bleinagel.com/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/privacy/</guid>
+      <description>Privacy Policy
+Effective date: 2023-03-01
+Our website is committed to protecting your privacy. This Privacy Policy describes the types of information we may collect from you or that you may provide to us when you visit our website, and our practices for collecting, using, maintaining, protecting, and disclosing that information.
+Information we collect
+We may collect personal information that you provide to us when you sign up for our newsletter or contact us through our website.</description>
     </item>
     
   </channel>

@@ -139,6 +139,7 @@ if (!doNotTrack) {
      
 
     
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
   </head>
 
   <body>
@@ -273,6 +274,16 @@ if (!doNotTrack) {
       <i class="sidebar-button-icon fas fa-lg fa-rss" aria-hidden="true"></i>
       
       <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/privacy" title="Privacy">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Privacy</span>
     </a>
   </li>
 
@@ -886,6 +897,27 @@ $(document).ready(function() {
 
 
     
+    
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#eaf7f7",
+          "text": "#5c7291"
+        },
+        "button": {
+          "background": "#56cbdb",
+          "text": "#ffffff"
+        }
+      },
+      "position": "bottom-left",
+      "content": {
+      "message": "We collect usage data using Google Analytics for the purposes of visualizing the traffic on this website. All data is anonymized and we do not sell or share any data with third parties.",
+      "href": "/projects"
+      }
+    });
+    </script>
   </body>
 </html>
 

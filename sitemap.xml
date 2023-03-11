@@ -2,13 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xiahe-bleinagel.com/tags/advice/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/career/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/chatgpt/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/continuous-learning/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/life/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/personal-growth/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/posts/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/2023/03/take-a-break-and-continue/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiahe-bleinagel.com/categories/analytics-engineering/</loc>
     <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/big-query/</loc>
-    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/categories/</loc>
     <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/categories/data-engineering/</loc>
@@ -23,16 +53,7 @@
     <loc>https://xiahe-bleinagel.com/tags/google-cloud/</loc>
     <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xiahe-bleinagel.com/posts/</loc>
-    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/tags/</loc>
-    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://xiahe-bleinagel.com/2023/02/week-4-data-engineering-zoomcamp-notes-analytics-engineering-and-dbt/</loc>
-    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/</loc>
     <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/2023/02/week-3-data-engineering-zoomcamp-notes-data-warehouse-and-bigquery/</loc>
@@ -51,9 +72,6 @@
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/categories/ai/</loc>
-    <lastmod>2023-01-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/tags/chatgpt/</loc>
     <lastmod>2023-01-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/categories/chatgpt/</loc>
@@ -122,16 +140,19 @@
     <loc>https://xiahe-bleinagel.com/tags/iam/</loc>
     <lastmod>2023-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xiahe-bleinagel.com/tags/career/</loc>
+    <loc>https://xiahe-bleinagel.com/categories/career/</loc>
     <lastmod>2023-01-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xiahe-bleinagel.com/categories/career/</loc>
+    <loc>https://xiahe-bleinagel.com/tags/career-advice/</loc>
     <lastmod>2023-01-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/categories/data-science/</loc>
     <lastmod>2023-01-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/2023/01/from-a-stay-at-home-mom-to-a-data-scientist/</loc>
+    <lastmod>2023-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/life/</loc>
     <lastmod>2023-01-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/mentoring/</loc>
@@ -143,6 +164,10 @@
     <loc>https://xiahe-bleinagel.com/about/</loc>
   </url><url>
     <loc>https://xiahe-bleinagel.com/contact/</loc>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/pravacy/</loc>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/privacy/</loc>
   </url><url>
     <loc>https://xiahe-bleinagel.com/projects/</loc>
   </url>

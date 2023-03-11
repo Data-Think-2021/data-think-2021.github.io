@@ -68,16 +68,18 @@
   
   
     
-      <meta property="article:section" content="Data science">
-    
       <meta property="article:section" content="Career">
     
+      <meta property="article:section" content="Data Science">
+    
   
   
     
-      <meta property="article:tag" content="Career">
+      <meta property="article:tag" content="Career Advice">
     
       <meta property="article:tag" content="Mentoring">
+    
+      <meta property="article:tag" content="Life">
     
   
 
@@ -139,6 +141,7 @@ if (!doNotTrack) {
      
 
     
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
   </head>
 
   <body>
@@ -276,6 +279,16 @@ if (!doNotTrack) {
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiahe-bleinagel.com/privacy" title="Privacy">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Privacy</span>
+    </a>
+  </li>
+
 
     </ul>
   </div>
@@ -308,9 +321,9 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiahe-bleinagel.com/categories/data-science">Data science</a>, 
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/career">Career</a>, 
     
-      <a class="category-link" href="https://xiahe-bleinagel.com/categories/career">Career</a>
+      <a class="category-link" href="https://xiahe-bleinagel.com/categories/data-science">Data Science</a>
     
   
 
@@ -379,9 +392,11 @@ Fortunately, I was soon enrolled in the master&rsquo;s program of <a href="https
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/career/">Career</a>
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/career-advice/">Career Advice</a>
 
   <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/mentoring/">Mentoring</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiahe-bleinagel.com/tags/life/">Life</a>
 
                   </div>
                 
@@ -649,6 +664,27 @@ $(document).ready(function() {
 
 
     
+    
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#eaf7f7",
+          "text": "#5c7291"
+        },
+        "button": {
+          "background": "#56cbdb",
+          "text": "#ffffff"
+        }
+      },
+      "position": "bottom-left",
+      "content": {
+      "message": "We collect usage data using Google Analytics for the purposes of visualizing the traffic on this website. All data is anonymized and we do not sell or share any data with third parties.",
+      "href": "/projects"
+      }
+    });
+    </script>
   </body>
 </html>
 
