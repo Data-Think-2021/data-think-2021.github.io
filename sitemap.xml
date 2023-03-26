@@ -2,13 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xiahe-bleinagel.com/tags/amazon-route-53/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/2023/03/create-a-free-custom-domain-based-email-address/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/email/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/categories/personal-website/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/posts/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xiahe-bleinagel.com/tags/zoho/</loc>
+    <lastmod>2023-03-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xiahe-bleinagel.com/tags/advice/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/career/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/categories/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/chatgpt/</loc>
@@ -23,16 +47,7 @@
     <loc>https://xiahe-bleinagel.com/tags/personal-growth/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xiahe-bleinagel.com/posts/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/tags/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://xiahe-bleinagel.com/2023/03/take-a-break-and-continue/</loc>
-    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/categories/analytics-engineering/</loc>
@@ -108,9 +123,6 @@
     <lastmod>2023-01-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/2023/01/a-custom-domain-for-my-hugo-personal-website-hosted-on-github-pages/</loc>
-    <lastmod>2023-01-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xiahe-bleinagel.com/tags/amazon-route-53/</loc>
     <lastmod>2023-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xiahe-bleinagel.com/tags/github-pages/</loc>
