@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Xia He-Bleinagel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://xiahe-bleinagel.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud</title>
+      <link>https://xiahe-bleinagel.com/tags/cloud/</link>
+      <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://xiahe-bleinagel.com/tags/nlp/</link>
+      <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unsupervised learning</title>
+      <link>https://xiahe-bleinagel.com/tags/unsupervised-learning/</link>
+      <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://xiahe-bleinagel.com/tags/unsupervised-learning/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Continuous learning</title>
       <link>https://xiahe-bleinagel.com/tags/continuous-learning/</link>
@@ -220,15 +247,6 @@
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://xiahe-bleinagel.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cloud</title>
-      <link>https://xiahe-bleinagel.com/tags/cloud/</link>
-      <pubDate>Tue, 10 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://xiahe-bleinagel.com/tags/cloud/</guid>
       <description></description>
     </item>
     
